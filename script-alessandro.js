@@ -146,6 +146,7 @@ allAnswers.push(domanda.incorrect_answers)
 //numero casuale per randomicizzazione domande
 let numeroCasuale = Math.floor(Math.random() * allQuestions.length);
 console.log(numeroCasuale);
+// facciamo lo slice della domanda che abbiamo appena visualizzato (anche delle risposte).
 
 let selectedQuestion = allAnswers[numeroCasuale];
 console.log(selectedQuestion);
@@ -164,26 +165,6 @@ selectedQuestion.forEach(answer => {
     bloccoBottoni.appendChild(buttons);
 });
 
+// testo domanda  display
 questionsTitle.textContent = allQuestions[numeroCasuale];
-
-
-
-
-/*
-let rispostaCasuale = Math.floor(Math.random() * allAnswers[numeroCasuale].length)
-let bloccoDomande = document.createElement("div");
-// let logo = document.querySelector("#logo");
-bloccoDomande.textContent = allQuestions[numeroCasuale];
-logo.append(bloccoDomande);
-
-
-let bottone1= document.createElement("button")
-let bottone2= document.createElement("button")
-let bottone3= document.createElement("button")
-let bottone4= document.createElement("button")
-bottone1.textContent = allAnswers[numeroCasuale][rispostaCasuale]
-bottone2.textContent = allAnswers[numeroCasuale][rispostaCasuale]
-bloccoDomande.append(bottone1);
-bloccoDomande.append(bottone2);
-*/
 
