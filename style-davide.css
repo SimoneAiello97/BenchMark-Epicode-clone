@@ -1,20 +1,15 @@
-/* @keyframes rotation {
-    from{background-color: red}
-    to{background-color: blue;}
-} */
-
 .timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-image: conic-gradient(#00ffff 5deg, #D20094 0deg);
+    background-image: conic-gradient(#00ffff 0deg, #D20094 0deg);
     position: relative;
-    
-    /* animation-name: rotation;
-    animation-duration: 4s;
-    animation-timing-function: linear; */
-
-    
+    animation: countdown;
+    animation-duration: 5s;
+    animation-timing-function: linear;
 }
 
 .timer::after {
@@ -28,9 +23,3 @@
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
-
-.timer:hover{
-    background-image: conic-gradient(#00ffff 360deg, #D20094 0deg);
-}
-
-
