@@ -2,7 +2,20 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
 
+.logo img{
+    width:200px;
 
+
+
+}
+.home{
+    background-image:url("./img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2em 4em;
+   
+
+}
 .title{
     font-family: 'Outfit', sans-serif;
     font-size: 60px;
@@ -16,23 +29,46 @@
 }
 .instruction{
     font-family: 'Inter', sans-serif;
+    color: #D20094;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 16px;
 
 }
 .lista{
     font-family: 'Inter', sans-serif;
-
+    color:white;
+    margin-bottom: 200px;
 
 }
+.lista ul{
+    list-style-type:circle;
+    padding-left: 20px;
+}
+.lista p{
+    margin-bottom: 30px;
+}
+.check{
+    padding-bottom: 104px;
+}
+.check span{
+    color:white;
+    font-family: 'Inter', sans-serif;
 
+}
+.check input{
+    color: #d2009300;
 
+}
+.bottone{
+    background-color: #00FFFF;
+    font-family: 'Outfit', sans-serif;
+    margin-left: 600px;
+    width: 300px;
+    height:70px;
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 0px 9px 9px 0px #02c2fdc2, 0px 9px 79px 0px #00eeffcf;
 
-
-
-
-.home{
-    background-image:url("./img/bg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 50px 50px;
 
 }
