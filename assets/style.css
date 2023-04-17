@@ -32,7 +32,7 @@
     color: #D20094;
     margin: 10px 0;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 30px;
 
 }
 .lista{
@@ -45,8 +45,12 @@
     list-style-type:circle;
     padding-left: 20px;
 }
+.lista ul li {
+    margin: 10px 0;
+}
 .lista p{
     margin-bottom: 30px;
+    
 }
 .check{
     padding-bottom: 104px;
