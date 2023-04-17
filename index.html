@@ -5,37 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/script.js">
-    <link rel="stylesheet" href="assets/reset.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/script/script.js">
+    <link rel="stylesheet" href="assets/css/style.css">
     
     
 </head>
 <body>
-    <div class="home">
-        <div class="logo"><img src="./assets/img/epicode_logo.png"></div>
-        <div class="title">
-            <p>Welcome to</p>
-            <span>your exam</span>
+    <div class="first">
+
+        <div class="home">
+
+            <div class="logoez">
+            <div class="logo"><img src="./assets/img/epicode_logo.png"></div>
+            </div>
+            
+            <div class="title">
+                <p>Welcome to</p>
+                <span>your exam</span>
+            </div>
+
+            <div class="instruction">
+                Instructions
+            </div                                                                                                                            >
+
+            <div class="lista">
+                <p>We don't expect most engineers to know to all of these <br>
+                questions,so don't worry if you're unsure of a few of them.</p>
+                <ul>
+                    <li>Each questions is <span>timed</span> and can only <span>answered once.</span></li>
+                    <li>Changing Browser tab or opening other windows will <span>invalidate the question</span></li>
+                    <li>This exam will take approx. <span>0-5 minutes</span></li>
+                </ul>
+            </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="miaCheckbox" />
+                    <label for="miaCheckbox">
+                        <span>I promise to answer myself without help from any</span>
+                    </label>
+                </div>
+                <div class="cont-bottone">
+                <button class="bottone" onclick="verificaCheckbox()">PROCEED</button>
+                </div>
         </div>
-
-        <div class="instruction">
-            Instructions
-        </div                                                                                                                            >
-
-        <div class="lista">
-            <p>We don't expect most engineers to know to all of these <br>
-            questions,so don't worry if you're unsure of a few of them.</p>
-            <ul>
-                <li>Each questions is timed and can only answered once.</li>
-                <li>Changing Browser tab or opening other windows will invalidate the question</li>
-                <li>This exam will take approx. 0-5 minutes</li>
-            </ul>
-        </div>
-
-        <div class="check">
-            <input type="checkbox"><span>I promise to answer myself without help from any</span>
-            <button class="bottone">Proceed</button>
     </div>
 </body>
 </html>
