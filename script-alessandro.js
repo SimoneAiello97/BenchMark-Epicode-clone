@@ -98,4 +98,89 @@ const questions = [
     },
   ];
 
+//console.log(questions);
+//CREAZIONE ELEMENTI/STRUTTURA PAGINA
+
+// TEMPORANEO
+let logo = document.querySelector('#logo');  
+let bodyTemp = document.querySelector('#temp');
+//   creazione contenitore
+let allContent = document.createElement("div");
+allContent.id = "container";
+bodyTemp.appendChild(allContent);
+
+// creazione blocco domande
+let bloccoDomanda = document.createElement("div");
+bloccoDomanda.id = "question-container";
+allContent.appendChild(bloccoDomanda);
+let questionsTitle = document.createElement("p");
+questionsTitle.className = "questions";
+allContent.append(bloccoDomanda);
+
+//  creazione  blocco risposta
+let bloccoRisposta = document.createElement("div");
+bloccoRisposta.className = "answers-container";
+
+// creazione bottoni
+let bloccoBottoni = document.querySelector("#button-container");
+
+
+//  codice  
+let allAnswers =[];
+let allQuestions = [];
+
+for (let domanda of questions) {
+allQuestions.push(domanda.question)
+domanda.incorrect_answers.push(domanda.correct_answer)
+allAnswers.push(domanda.incorrect_answers)
+};
+
+//console.log(allQuestions);
+//console.log(allAnswers);
+
+//numero casuale per randomicizzazione domande
+let numeroCasuale = Math.floor(Math.random() * allQuestions.length);
+console.log(numeroCasuale);
+
+//randomicizzare ordine risposte
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+console.log(shuffle(allAnswers[numeroCasuale]));
+
+//creazione bottoni
+/* for (let i = 0; i < allAnswers[numeroCasuale].length; i++) {
+    let buttons = document.createElement("button");
+    buttons.textContent = (allAnswers[numeroCasuale])[i];
+    bloccoBottoni.appendChild(buttons);
+  } */
+
+let selectedArray = allAnswers[numeroCasuale];
+answers.forEach(answer => {
+    let button = document.createElement("button");
+    button.textContent = answer;
+    buttonContainer.appendChild(button);
+  });
+  
+
+
+
+
+/*
+let rispostaCasuale = Math.floor(Math.random() * allAnswers[numeroCasuale].length)
+let bloccoDomande = document.createElement("div");
+// let logo = document.querySelector("#logo");
+bloccoDomande.textContent = allQuestions[numeroCasuale];
+logo.append(bloccoDomande);
+
+
+let bottone1= document.createElement("button")
+let bottone2= document.createElement("button")
+let bottone3= document.createElement("button")
+let bottone4= document.createElement("button")
+bottone1.textContent = allAnswers[numeroCasuale][rispostaCasuale]
+bottone2.textContent = allAnswers[numeroCasuale][rispostaCasuale]
+bloccoDomande.append(bottone1);
+bloccoDomande.append(bottone2);
+*/
 
