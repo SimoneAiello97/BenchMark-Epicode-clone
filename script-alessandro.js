@@ -113,16 +113,21 @@ bodyTemp.appendChild(allContent);
 let bloccoDomanda = document.createElement("div");
 bloccoDomanda.id = "question-container";
 allContent.appendChild(bloccoDomanda);
+
 let questionsTitle = document.createElement("p");
 questionsTitle.className = "questions";
 allContent.append(bloccoDomanda);
+bloccoDomanda.appendChild(questionsTitle);
 
 //  creazione  blocco risposta
 let bloccoRisposta = document.createElement("div");
 bloccoRisposta.className = "answers-container";
+allContent.append(bloccoRisposta);
 
 // creazione bottoni
-let bloccoBottoni = document.querySelector("#button-container");
+let bloccoBottoni  =  document.createElement("div");
+bloccoBottoni.id = "button-container"
+bloccoRisposta.append(bloccoBottoni);
 
 
 //  codice  
@@ -142,26 +147,24 @@ allAnswers.push(domanda.incorrect_answers)
 let numeroCasuale = Math.floor(Math.random() * allQuestions.length);
 console.log(numeroCasuale);
 
+let selectedQuestion = allAnswers[numeroCasuale];
+console.log(selectedQuestion);
+
 //randomicizzare ordine risposte
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
   }
-console.log(shuffle(allAnswers[numeroCasuale]));
+        //console.log(shuffle(allAnswers[numeroCasuale]));
+shuffle(selectedQuestion);
 
-//creazione bottoni
-/* for (let i = 0; i < allAnswers[numeroCasuale].length; i++) {
+//creazione bottoni per ogni risposta
+selectedQuestion.forEach(answer => {
     let buttons = document.createElement("button");
-    buttons.textContent = (allAnswers[numeroCasuale])[i];
+    buttons.textContent = answer;
     bloccoBottoni.appendChild(buttons);
-  } */
+});
 
-let selectedArray = allAnswers[numeroCasuale];
-answers.forEach(answer => {
-    let button = document.createElement("button");
-    button.textContent = answer;
-    buttonContainer.appendChild(button);
-  });
-  
+questionsTitle.textContent = allQuestions[numeroCasuale];
 
 
 
