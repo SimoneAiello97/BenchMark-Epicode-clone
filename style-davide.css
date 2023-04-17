@@ -7,7 +7,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-image: conic-gradient(#00ffff 30deg, #D20094 0deg);
+    background-image: conic-gradient(#00ffff 5deg, #D20094 0deg);
     position: relative;
     
     /* animation-name: rotation;
