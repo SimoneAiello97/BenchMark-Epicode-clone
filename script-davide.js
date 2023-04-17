@@ -13,4 +13,4 @@ let timer = setInterval(function(){
                 n += 1;
             }
 
-        }, 30);
+        }, 300);
