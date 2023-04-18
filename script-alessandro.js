@@ -168,12 +168,13 @@ shuffle(selectedQuestion);
 // testo domanda  display
 questionsTitle.textContent = allQuestions[numeroCasuale];
 
-//creazione bottoni per ogni risposta, SOLO DOMANDA 1
+
+//creazione bottoni per ogni risposta, SOLO PRIMA DOMANDA
 selectedQuestion.forEach(answer => {
-    let buttons = document.createElement("button");
-    buttons.textContent = answer;
-    bloccoBottoni.appendChild(buttons);
-    buttons.addEventListener("click", nextQuestion);
+  let buttons = document.createElement("button");
+  buttons.textContent = answer;
+  bloccoBottoni.appendChild(buttons);
+  buttons.addEventListener("click", nextQuestion());
 });
 
 // next question & next risposte
@@ -190,9 +191,10 @@ function nextQuestion() {
       buttons.textContent = answer;
       bloccoBottoni.appendChild(buttons);
       buttons.addEventListener("click", nextQuestion);
-  });
+      }); 
     footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
+    //countdown();
   } else {
     console.log('FINITE LE DOMANDE');
   }
-}
+} 
