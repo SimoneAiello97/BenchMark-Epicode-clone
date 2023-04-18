@@ -5,6 +5,5 @@ function verificaCheckbox() {
     }else if(casella.checked){
         const element = document.getElementById("first");
         element.remove();
-        document.getElementById('rating-star').innerHTML=`<p class="title">hello world</p>`
     }
 }
