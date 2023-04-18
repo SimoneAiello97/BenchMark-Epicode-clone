@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
+
+.background{
+    background-image:url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.logo img{
+    width:200px;
+}
+
+span{
+    color: white;
+    font-weight: bold;
+}
+.home{
+    padding-top: 0.5em;
+    padding-right:6em;
+    padding-left:6em ;
+    padding-bottom: 4em;
+   
+}
+
+.home2{
+
+    padding-top: 4em;
+    padding-left: 6em;
+
+}
+.title{
+    font-family: 'Outfit', sans-serif;
+    font-size: 60px;
+    color:#E7E7EB;
+    margin:50px 0;
+}
+.title span {
+    color:#E7E7EB;
+    font-weight: bolder;
+
+}
+.instruction{
+    font-family: 'Inter', sans-serif;
+    color: #D20094;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 30px;
+
+}
+.lista{
+    font-family: 'Inter', sans-serif;
+    color:#E7E7EB;
+    margin-bottom: 106px;
+
+}
+.lista ul{
+
+    list-style-type:disc;
+    padding-left: 20px;
+}
+.lista ul li {
+    margin: 13px 0;
+}
+.lista p{
+    margin-bottom: 30px;
+    
+}
+
+
+
+
+
+.checkbox-container{
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+
+}
+.checkbox-container span{
+    color:#E7E7EB;
+    font-family: 'Inter', sans-serif;
+}
+.checkbox-container input{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: rgba(40, 40, 40, 0);
+    color:white;
+    appearance: none;
+    border: white;
+  
+    border-color: white;
+    border-style: solid;
+    border: 0.5px 0.5px;
+
+
+}
+
+#miaCheckbox:checked {
+    background: white;
+}
+
+
+
+
+
+
+.cont-bottone{
+    display: flex;
+    justify-content: end;
+}
+.bottone{
+    background-color: #00FFFF;
+    font-family: 'Outfit', sans-serif;
+    width: 300px;
+    height:70px;
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 0px 0px 70px 0px #02c2fdc2, 0px 0px 70px 0px #00eeffcf;
+
+
+}
+.centro{
+    text-align: center;
+}
