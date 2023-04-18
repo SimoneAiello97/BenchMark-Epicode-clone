@@ -74,9 +74,12 @@ span{
 
 
 .checkbox-container{
-    margin-bottom: 70px;
+    margin-bottom: 35px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+
 
 }
 .checkbox-container span{
