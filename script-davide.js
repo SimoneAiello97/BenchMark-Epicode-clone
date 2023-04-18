@@ -117,6 +117,7 @@ function countdown() {
     // definisce l'intervallo con cui si riempie il cerchio
     let interval;
 
+    // SELEZIONARE LA DOMANDA GIUSTA
     for (let question of questions){
         switch (question.difficulty) {
             case 'easy':
@@ -158,9 +159,9 @@ function countdown() {
     function myStop(){
         clearInterval(myInterval);
     }
-    if(countdownNumber == 0){myStop()}
+    if(countdownNumber == 0){
+        myStop();
+        nextQuestion();}
     };
 }
-
-countdown()
  
