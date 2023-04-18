@@ -164,4 +164,8 @@ function countdown() {
         nextQuestion();}
     };
 }
+
+function riavvia() {
+  countdown()
+}
  
