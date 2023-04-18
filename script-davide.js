@@ -1,118 +1,21 @@
+/*
 function countdown() {
+  let timerContainer = document.createElement("div");
+  timerContainer.id = "timer-container";
+  let temp = document.querySelector('#temp')
+  temp.appendChild(timerContainer);
 
-    // array con domande
-    const questions = [
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question: "What does CPU stand for?",
-          correct_answer: "Central Processing Unit",
-          incorrect_answers: [
-            "Central Process Unit",
-            "Computer Personal Unit",
-            "Central Processor Unit",
-          ],
-        },
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question:
-            "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
-          correct_answer: "Final",
-          incorrect_answers: ["Static", "Private", "Public"],
-        },
-        {
-          category: "Science: Computers",
-          type: "boolean",
-          difficulty: "easy",
-          question: "The logo for Snapchat is a Bell.",
-          correct_answer: "False",
-          incorrect_answers: ["True"],
-        },
-        {
-          category: "Science: Computers",
-          type: "boolean",
-          difficulty: "easy",
-          question:
-            "Pointers were not used in the original C programming language; they were added later on in C++.",
-          correct_answer: "False",
-          incorrect_answers: ["True"],
-        },
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question:
-            "What is the most preferred image format used for logos in the Wikimedia database?",
-          correct_answer: ".svg",
-          incorrect_answers: [".png", ".jpeg", ".gif"],
-        },
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question: "In web design, what does CSS stand for?",
-          correct_answer: "Cascading Style Sheet",
-          incorrect_answers: [
-            "Counter Strike: Source",
-            "Corrective Style Sheet",
-            "Computer Style Sheet",
-          ],
-        },
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question:
-            "What is the code name for the mobile operating system Android 7.0?",
-          correct_answer: "Nougat",
-          incorrect_answers: [
-            "Ice Cream Sandwich",
-            "Jelly Bean",
-            "Marshmallow",
-          ],
-        },
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question: "On Twitter, what is the character limit for a Tweet?",
-          correct_answer: "140",
-          incorrect_answers: ["120", "160", "100"],
-        },
-        {
-          category: "Science: Computers",
-          type: "boolean",
-          difficulty: "easy",
-          question: "Linux was first created as an alternative to Windows XP.",
-          correct_answer: "False",
-          incorrect_answers: ["True"],
-        },
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question:
-            "Which programming language shares its name with an island in Indonesia?",
-          correct_answer: "Java",
-          incorrect_answers: ["Python", "C", "Jakarta"],
-        },
-      ];
-    
-      // creazione blocchi del dom
-    let blocco = document.getElementById("timer");
-    let para = document.createElement('p');
-    let para1 = document.createElement('p');
-    let seconds = document.getElementById('seconds');
-    para.innerText = 'SECONDS';
-    para1.innerText = 'REMAINING';
-    para.classList.add('para');
-    para1.classList.add('para');
-    blocco.appendChild(para);
-    blocco.appendChild(seconds);
-    blocco.appendChild(para1);
+  let timer = document.createElement("div");
+  timer.classList.add("timer");
+  timer.id = "timer";
+  timerContainer.append(timer);
+
+  let seconds = document.createElement("p");
+  seconds.classList.add("z-index");
+  seconds.id = "seconds";
+  timer.append(seconds);
+  
+  
 
     // definisce l'intervallo con cui si riempie il cerchio
     let interval;
@@ -131,7 +34,7 @@ function countdown() {
         }
     }
     let number = 0;
-    let timer = setInterval(function(){
+    let ced = setInterval(function(){
 
     blocco.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
     number >= 360 ? number += 0 : number += 1;}, interval);
@@ -152,16 +55,79 @@ function countdown() {
                 countdownNumber = 90;
         }
     }
-    seconds.innerHTML = countdownNumber;
+    seconds.innerHTML = parseInt(countdownNumber);
     function myTimer() {
         countdownNumber -= 1
         seconds.innerHTML = countdownNumber;
-    function myStop(){
-        clearInterval(myInterval);
-    }
-    if(countdownNumber == 0){
+      if(countdownNumber === 0){
         myStop();
-        nextQuestion();}
+        }
+      }
+      function myStop(){
+          clearInterval(myInterval);
+          let children = timerContainer.querySelectorAll('*')
+          children.forEach(child=>child.textContent= null)
+
+      }
     };
-}
- 
+    function stop () {
+      let children = timerContainer.querySelectorAll('*')
+          children.forEach(child=>child.textContent='')
+    }
+*/
+
+let myInterval;
+let timerInterval;
+
+function startQuiz() {
+    // Creazione del timer
+    let timerContainer = document.createElement("div");
+    timerContainer.id = "timer-container";
+    let temp = document.querySelector('#temp')
+    temp.appendChild(timerContainer);
+  
+    let timer = document.createElement("div");
+    timer.classList.add("timer");
+    timer.id = "timer";
+    timerContainer.append(timer);
+  
+    let seconds = document.createElement("p");
+    seconds.classList.add("z-index");
+    seconds.id = "seconds";
+    timer.append(seconds);
+  
+    // Imposta il countdown
+    let countdownNumber = 30;
+    seconds.textContent = countdownNumber;
+  
+    // Inizia l'animazione del cerchio
+    let number = 0;
+    let interval = 83;
+    let timerInterval = setInterval(function(){
+      timer.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
+      number >= 360 ? number += 0 : number += 1;
+    }, interval);
+  
+    // Definisce il countdown
+    let myInterval = setInterval(myTimer, 1000);
+    function myTimer() {
+      countdownNumber -= 1
+      seconds.textContent = countdownNumber;
+      if(countdownNumber === 0){
+        myStop();
+      }
+    }
+    function myStop(){
+      clearInterval(myInterval);
+      clearInterval(timerInterval);
+      timerContainer.remove();
+      nextQuestion()
+    }
+    
+  }
+
+  function ferma(){
+    document.querySelector('#timer-container').remove()
+    nextQuestion()
+  }
+

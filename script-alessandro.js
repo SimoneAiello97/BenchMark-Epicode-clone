@@ -177,7 +177,8 @@ selectedQuestion.forEach(answer => {
 });
 
 // next question & next risposte
-function nextQuestion() {  
+function nextQuestion() {
+  startQuiz();  
   allQuestions.splice(numeroCasuale, 1);
   allAnswers.splice(numeroCasuale, 1);
   if (allQuestions.length !== 0){
@@ -189,9 +190,15 @@ function nextQuestion() {
       let buttons = document.createElement("button");
       buttons.textContent = answer;
       bloccoBottoni.appendChild(buttons);
-      buttons.addEventListener("click", nextQuestion);
+      buttons.addEventListener("click",function(){
+        nextQuestion()
+        ferma()
+      } );
   });
     footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
+
+    
+    
   } else {
     console.log('FINITE LE DOMANDE');
   }
