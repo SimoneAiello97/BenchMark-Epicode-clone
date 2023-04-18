@@ -168,11 +168,17 @@ span{
 }
 .textarea{
     background-color: rgba(67, 67, 67, 0);
-    color: aliceblue;
+    color: white;
     font-family: 'Inter', sans-serif;
-    border-width: 0; 
-    border-bottom: 5px rgb(220, 46, 46);
+    appearance: none;
+    border-color: rgb(71, 3, 116);
+    
+    border-top: 4.5px;
+    border-left: 4px;
+    border-right: 3px;
+
     margin-bottom: 50px;
+    width: 620px;
 
 }
 .cont-bottone2{

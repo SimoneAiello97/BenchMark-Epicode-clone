@@ -29,6 +29,6 @@ document.getElementById('rating-star').innerHTML=
     </div>
     </div>
     <div class="cont-bottone2">
-        <button class="bottone2" onclick="verificaCheckbox()">PROCEED</button>
+        <button class="bottone2" onclick="verificaCheckbox()">MORE INFO</button>
     </div>
 </div>`
