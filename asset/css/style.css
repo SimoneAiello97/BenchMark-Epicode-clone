@@ -153,9 +153,7 @@ span{
 }
 .star-rating{
     display: inline-flex;
-    align-items: center;
-    width:530px;
-    height: 49px;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
