@@ -75,12 +75,13 @@ span{
 
 .checkbox-container{
     margin-bottom: 70px;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+
 }
 .checkbox-container span{
     color:#E7E7EB;
     font-family: 'Inter', sans-serif;
-
 }
 .checkbox-container input{
     width: 20px;
@@ -97,6 +98,7 @@ span{
 
 
 }
+
 #miaCheckbox:checked {
     background: white;
 }
@@ -107,8 +109,8 @@ span{
 
 
 .cont-bottone{
-    display: inline-block;
-    margin-left: 500px;
+    display: flex;
+    justify-content: end;
 }
 .bottone{
     background-color: #00FFFF;
