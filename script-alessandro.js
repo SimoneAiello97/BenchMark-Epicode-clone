@@ -97,10 +97,13 @@ const questions = [
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
   ];
-
-//console.log(questions);
-//CREAZIONE ELEMENTI/STRUTTURA PAGINA
-
+  
+  //console.log(questions);
+  //CREAZIONE ELEMENTI/STRUTTURA PAGINA
+  //  array domande risposte
+  let allAnswers =[];
+  let allQuestions = [];
+  
 // TEMPORANEO
 let logo = document.querySelector('#logo');  
 let bodyTemp = document.querySelector('#temp');
@@ -129,10 +132,18 @@ let bloccoBottoni  =  document.createElement("div");
 bloccoBottoni.id = "button-container"
 bloccoRisposta.append(bloccoBottoni);
 
+//  creazione blocco footer
+let footer = document.createElement("div");
+footer.id = "footer";
+allContent.append(footer);
+let footerText = document.createElement("p");
+footer.append(footerText);
+footerText.textContent = `QUESTION 1`
+let span = document.createElement("span");
+footer.append(span);
+span.textContent = "/10"
 
-//  codice  
-let allAnswers =[];
-let allQuestions = [];
+
 
 for (let domanda of questions) {
 allQuestions.push(domanda.question)
@@ -140,13 +151,9 @@ domanda.incorrect_answers.push(domanda.correct_answer)
 allAnswers.push(domanda.incorrect_answers)
 };
 
-//console.log(allQuestions);
-//console.log(allAnswers);
-
 //numero casuale per randomicizzazione domande
 let numeroCasuale = Math.floor(Math.random() * allQuestions.length);
 console.log(numeroCasuale);
-// facciamo lo slice della domanda che abbiamo appena visualizzato (anche delle risposte).
 
 let selectedQuestion = allAnswers[numeroCasuale];
 console.log(selectedQuestion);
@@ -155,16 +162,39 @@ console.log(selectedQuestion);
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
   }
-        //console.log(shuffle(allAnswers[numeroCasuale]));
+
 shuffle(selectedQuestion);
 
-//creazione bottoni per ogni risposta
+// testo domanda  display
+questionsTitle.textContent = allQuestions[numeroCasuale];
+
+//creazione bottoni per ogni risposta, SOLO DOMANDA 1
 selectedQuestion.forEach(answer => {
     let buttons = document.createElement("button");
     buttons.textContent = answer;
     bloccoBottoni.appendChild(buttons);
+    buttons.addEventListener("click", nextQuestion);
 });
 
-// testo domanda  display
-questionsTitle.textContent = allQuestions[numeroCasuale];
+// next question & next risposte
+function nextQuestion() {  
+  allQuestions.splice(numeroCasuale, 1);
+  allAnswers.splice(numeroCasuale, 1);
+  if (allQuestions.length !== 0){
+    numeroCasuale = Math.floor(Math.random() * allQuestions.length);
+    questionsTitle.textContent = allQuestions[numeroCasuale];
+    let eliminareBottoni = document.querySelectorAll("button");
+    eliminareBottoni.forEach((button) => button.remove());
+    allAnswers[numeroCasuale].forEach(answer => {
+      let buttons = document.createElement("button");
+      buttons.textContent = answer;
+      bloccoBottoni.appendChild(buttons);
+      buttons.addEventListener("click", nextQuestion);
+  });
+    footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
+  } else {
+    console.log('FINITE LE DOMANDE');
+  }
+}
+
 
