@@ -100,69 +100,69 @@ const questions = [
   
   //console.log(questions);
   //CREAZIONE ELEMENTI/STRUTTURA PAGINA
-  //  array domande risposte
-  let allAnswers =[];
-  let allQuestions = [];
   
-// TEMPORANEO
-let logo = document.querySelector('#logo');  
-let bodyTemp = document.querySelector('#temp');
-//   creazione contenitore
-let allContent = document.createElement("div");
-allContent.id = "container";
-bodyTemp.appendChild(allContent);
+  // TEMPORANEO
+  let logo = document.querySelector('#logo');  
+  let bodyTemp = document.querySelector('#temp');
+  //   creazione contenitore
+  let allContent = document.createElement("div");
+  allContent.id = "container";
+  bodyTemp.appendChild(allContent);
+  
+  // creazione blocco domande
+  let bloccoDomanda = document.createElement("div");
+  bloccoDomanda.id = "question-container";
+  allContent.appendChild(bloccoDomanda);
+  
+  let questionsTitle = document.createElement("p");
+  questionsTitle.className = "questions";
+  allContent.append(bloccoDomanda);
+  bloccoDomanda.appendChild(questionsTitle);
+  
+  //  creazione  blocco risposta
+  let bloccoRisposta = document.createElement("div");
+  bloccoRisposta.className = "answers-container";
+  allContent.append(bloccoRisposta);
+  
+  // creazione bottoni
+  let bloccoBottoni  =  document.createElement("div");
+  bloccoBottoni.id = "button-container"
+  bloccoRisposta.append(bloccoBottoni);
+  
+  //  creazione blocco footer
+  let footer = document.createElement("div");
+  footer.id = "footer";
+  allContent.append(footer);
+  let footerText = document.createElement("p");
+  footer.append(footerText);
+  footerText.textContent = `QUESTION 1`
+  let span = document.createElement("span");
+  footer.append(span);
+  span.textContent = "/10"
 
-// creazione blocco domande
-let bloccoDomanda = document.createElement("div");
-bloccoDomanda.id = "question-container";
-allContent.appendChild(bloccoDomanda);
+  
 
-let questionsTitle = document.createElement("p");
-questionsTitle.className = "questions";
-allContent.append(bloccoDomanda);
-bloccoDomanda.appendChild(questionsTitle);
+// CODICE
 
-//  creazione  blocco risposta
-let bloccoRisposta = document.createElement("div");
-bloccoRisposta.className = "answers-container";
-allContent.append(bloccoRisposta);
-
-// creazione bottoni
-let bloccoBottoni  =  document.createElement("div");
-bloccoBottoni.id = "button-container"
-bloccoRisposta.append(bloccoBottoni);
-
-//  creazione blocco footer
-let footer = document.createElement("div");
-footer.id = "footer";
-allContent.append(footer);
-let footerText = document.createElement("p");
-footer.append(footerText);
-footerText.textContent = `QUESTION 1`
-let span = document.createElement("span");
-footer.append(span);
-span.textContent = "/10"
-
-
-
+//  array domande risposte
+let allAnswers =[];
+let allQuestions = [];
+  
 for (let domanda of questions) {
-allQuestions.push(domanda.question)
-domanda.incorrect_answers.push(domanda.correct_answer)
-allAnswers.push(domanda.incorrect_answers)
+  allQuestions.push(domanda.question)
+  domanda.incorrect_answers.push(domanda.correct_answer)
+  allAnswers.push(domanda.incorrect_answers)
 };
 
 //numero casuale per randomicizzazione domande
 let numeroCasuale = Math.floor(Math.random() * allQuestions.length);
-console.log(numeroCasuale);
 
 let selectedQuestion = allAnswers[numeroCasuale];
-console.log(selectedQuestion);
 
 //randomicizzare ordine risposte
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
-  }
-
+}
 shuffle(selectedQuestion);
 
 // testo domanda  display
@@ -196,5 +196,3 @@ function nextQuestion() {
     console.log('FINITE LE DOMANDE');
   }
 }
-
-
