@@ -1,14 +1,13 @@
-function countdown() {
 
-    // array con domande
-    const questions = [
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question: "What does CPU stand for?",
-          correct_answer: "Central Processing Unit",
-          incorrect_answers: [
+// array con domande
+const questions = [
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What does CPU stand for?",
+    correct_answer: "Central Processing Unit",
+    incorrect_answers: [
             "Central Process Unit",
             "Computer Personal Unit",
             "Central Processor Unit",
@@ -114,6 +113,10 @@ function countdown() {
     blocco.appendChild(seconds);
     blocco.appendChild(para1);
 
+    let flag;
+  
+    function countdown() {
+
     // definisce l'intervallo con cui si riempie il cerchio
     let interval;
 
@@ -158,14 +161,18 @@ function countdown() {
         seconds.innerHTML = countdownNumber;
     function myStop(){
         clearInterval(myInterval);
+        clearInterval(timer);
     }
-    if(countdownNumber == 0){
+    let myButton = document.getElementById('button');
+    let riavvia = function(){
+      flag = false;
+      console.log('cia');
+    }
+    myButton.addEventListener('click', riavvia)
+    if(countdownNumber == 0 || flag == false){
+        flag = true;
         myStop();
-        nextQuestion();}
-    };
+        // nextQuestion();}
+    }
 }
-
-function riavvia() {
-  countdown()
-}
- 
+    }
