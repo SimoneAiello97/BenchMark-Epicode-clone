@@ -123,6 +123,53 @@ span{
 
 
 }
+
+
 .centro{
     text-align: center;
+}
+.subtitle-star{
+    font-family: 'Outfit', sans-serif;
+    font-size: 30px;
+    color:#E7E7EB;
+    margin:50px 0;
+}
+.title-star{
+    font-family: 'Outfit', sans-serif;
+    font-size: 60px;
+    color:#E7E7EB;
+    margin:50px 0;
+    font-weight: bolder;
+}
+
+
+
+
+
+.star-rating {
+    font-size: 30px;
+    background-image: url("../img/star.svg");
+}
+  
+.star-rating i {
+    color: #ccc;
+    cursor: pointer;
+}
+  
+.star-rating i.fa-star {
+    position: relative;
+}
+  
+.star-rating i.fa-star:before {
+    content: "\f005";
+    background-image: url("../img/star.svg");
+    
+    position: absolute;
+    left: 0;
+}
+  
+.star-rating i.fa-star.active:before,
+.star-rating i.fa-star:hover:before {
+    content: "\f005";
+    color: #FFD700;
 }
