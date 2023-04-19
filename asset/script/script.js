@@ -56,45 +56,9 @@ let starRating = document.createElement("div");
 starRating.classList.add("star-rating");
 bloccoCentro.append(starRating);
 
-let stella = document.createElement("div");
-stella.classList.add("fastar");
-starRating.append(stella);
-
-let stella1 = document.createElement("div");
-stella1.classList.add("fastar");
-starRating.append(stella1);
-
-let stella2 = document.createElement("div");
-stella2.classList.add("fastar");
-starRating.append(stella2);
-
-let stella3 = document.createElement("div");
-stella3.classList.add("fastar");
-starRating.append(stella3);
-
-let stella4 = document.createElement("div");
-stella4.classList.add("fastar");
-starRating.append(stella4);
-
 let stella5 = document.createElement("div");
 stella5.classList.add("fastar");
 starRating.append(stella5);
-
-let stella6 = document.createElement("div");
-stella6.classList.add("fastar");
-starRating.append(stella6);
-
-let stella7 = document.createElement("div");
-stella7.classList.add("fastar");
-starRating.append(stella7);
-
-let stella8 = document.createElement("div");
-stella8.classList.add("fastar");
-starRating.append(stella8);
-
-let stella9 = document.createElement("div");
-stella9.classList.add("fastar");
-starRating.append(stella9);
 
 let subp = document.createElement("p");
 subp.classList.add("subtitle-star");
@@ -120,3 +84,8 @@ bottone.textContent="MORE INFO";
 contbottone.append(bottone);
 
 
+for (let i = 0; i < 10; i++) {
+    let stella5 = document.createElement("div");
+    stella5.classList.add("fastar");
+    starRating.append(stella5);
+  }
