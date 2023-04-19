@@ -147,11 +147,16 @@ const questions = [
 //  array domande risposte
 let allAnswers =[];
 let allQuestions = [];
-  
+let onlyCorrectAnswer = [];
+
+
+
+
 for (let domanda of questions) {
   allQuestions.push(domanda.question)
   domanda.incorrect_answers.push(domanda.correct_answer)
   allAnswers.push(domanda.incorrect_answers)
+  
 };
 
 //numero casuale per randomicizzazione domande
@@ -161,24 +166,24 @@ let selectedQuestion = allAnswers[numeroCasuale];
 
 //randomicizzare ordine risposte
 function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
-}
+  array.sort(() => Math.random() - 0.5);
+}    
 shuffle(selectedQuestion);
 
 // testo domanda  display
 questionsTitle.textContent = allQuestions[numeroCasuale];
 
-
-//creazione bottoni per ogni risposta, SOLO PRIMA DOMANDA
+//CODICE FUNZIONANTE INIZIO
+/* //creazione bottoni per ogni risposta, SOLO PRIMA DOMANDA        
 selectedQuestion.forEach(answer => {
   let buttons = document.createElement("button");
   buttons.textContent = answer;
   bloccoBottoni.appendChild(buttons);
-  buttons.addEventListener("click", nextQuestion());
-});
+  buttons.addEventListener("click", nextQuestion);
+}); 
 
-// next question & next risposte
-function nextQuestion() {  
+// next question & next risposte  
+function nextQuestion() { 
   allQuestions.splice(numeroCasuale, 1);
   allAnswers.splice(numeroCasuale, 1);
   if (allQuestions.length !== 0){
@@ -190,11 +195,89 @@ function nextQuestion() {
       let buttons = document.createElement("button");
       buttons.textContent = answer;
       bloccoBottoni.appendChild(buttons);
-      buttons.addEventListener("click", nextQuestion);
-      }); 
+      buttons.addEventListener("click", function()  {
+          nextQuestion();
+          //countAnswers();
+        })  
+      });   
+      footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
+      //countdown();
+    } else {
+      console.log('FINITE LE DOMANDE');
+    }  
+  }    */
+//CODICE FUNZIONANTE FINE
+
+let givenAnswer = [];
+let displayedQuestions = [];
+//let buttons;
+
+//creazione bottoni per ogni risposta, SOLO PRIMA DOMANDA
+selectedQuestion.forEach(answer => {
+  //onlyCorrectAnswer.push(allAnswers[numeroCasuale].indexOf(questions[numeroCasuale].correct_answer));
+  let buttons = document.createElement("button");
+  buttons.textContent = answer;
+  bloccoBottoni.appendChild(buttons);
+  buttons.addEventListener("click", function() {
+    handleButtonClick(event);
+    nextQuestion();
+  });
+});
+
+// next question & next risposte
+function nextQuestion() {  
+  
+  allQuestions.splice(numeroCasuale, 1);
+  allAnswers.splice(numeroCasuale, 1);
+  if (allQuestions.length !== 0){
+    numeroCasuale = Math.floor(Math.random() * allQuestions.length);
+    //prova
+    let correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
+    onlyCorrectAnswer.push(correctAnswer);
+    //
+    questionsTitle.textContent = allQuestions[numeroCasuale];
+    let eliminareBottoni = document.querySelectorAll("button");
+    eliminareBottoni.forEach((button) => button.remove());
+    allAnswers[numeroCasuale].forEach(answer => {
+      let buttons = document.createElement("button");
+      buttons.textContent = answer;
+      bloccoBottoni.appendChild(buttons);
+      buttons.addEventListener("click", function() {
+        handleButtonClick(event);
+        nextQuestion();
+      });
+    }); 
     footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
     //countdown();
   } else {
     console.log('FINITE LE DOMANDE');
+    controlAnswer();
   }
-} 
+}
+
+function handleButtonClick(event) {
+  let buttonText = event.target.textContent;
+  console.log(buttonText);
+  givenAnswer.push(buttonText);
+  displayedQuestions.push(allQuestions[numeroCasuale]);
+  }
+
+console.log(givenAnswer);
+console.log(displayedQuestions);
+
+function controlAnswer() {
+  let correctCount = 0;
+  let wrongCount = 0;
+
+  for (let i = 0; i < givenAnswer.length; i++) {
+    if (onlyCorrectAnswer.includes(givenAnswer[i])) {
+      correctCount++;
+    } else {
+      wrongCount++;
+    }
+  }
+
+  console.log(correctCount);
+  console.log(wrongCount);
+}
+
