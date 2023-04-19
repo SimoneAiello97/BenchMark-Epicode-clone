@@ -3,7 +3,7 @@ const questions = [
     {
       category: "Science: Computers",
       type: "multiple",
-      difficulty: "easy",
+      difficulty: "",
       question: "What does CPU stand for?",
       correct_answer: "Central Processing Unit",
       incorrect_answers: [
