@@ -1,4 +1,4 @@
-document.getElementById('rating-star').innerHTML=
+/*document.getElementById('rating-star').innerHTML=
 `<div class="centro">
     <div>
         <p class="title-star">Tell us how it's going</p>
@@ -32,4 +32,28 @@ document.getElementById('rating-star').innerHTML=
         <button class="bottone2" onclick="window.open('https://epicode.com/it/community/')">MORE INFO</button>
         
     </div>
-</div>`
+</div>`*/
+
+
+let logo = document.querySelector('.background');  
+let bodyTemp = document.querySelector('.home2');
+//   creazione contenitore
+let allContent = document.createElement("div");
+allContent.id = "rating-star";
+bodyTemp.appendChild(allContent);
+
+// creazione blocco centrale
+let bloccoCentro = document.createElement("div");
+bloccoCentro.className = "centro";
+allContent.appendChild(bloccoCentro);
+//blocco titolo
+let bloccoTitle = document.createElement("div");
+bloccoTitle.className = "cont-title";
+allContent.appendChild(bloccoTitle);
+
+let titolo = document.createElement("p");
+titolo.className = "title star";
+allContent.append(titolo);
+bloccoTitle.appendChild(titolo)
+
+let flag;
