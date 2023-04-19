@@ -102,23 +102,14 @@ for (let i = 0; i < 9; i++) {
 
 
 
-// rating stars
+// funzione di selezioe stelle
 const starContainer = document.querySelector('#star-container');
-let selectedStars = [];
-
 
 const stars = document.querySelectorAll('.fastar');
-let a = document.querySelectorAll('.fastar');
-
-stars.forEach((star) => {
-  star.addEventListener('click', () => {
-    if (star.classList.contains('selected')) {
-        
-
-        star.classList.remove('selected');
-    } else {
-      star.classList.add('selected');
-      selectedStars.push();
-    }
-  });
-});
+stars.forEach((star,index1) =>{
+  star.addEventListener("click",() =>{
+    stars.forEach((star,index2) =>{
+      index1 >= index2 ? star.classList.add("selected") : star.classList.remove("selected")
+  })
+})
+})
