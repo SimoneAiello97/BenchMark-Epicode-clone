@@ -1,14 +1,13 @@
-function countdown() {
 
-    // array con domande
-    const questions = [
-        {
-          category: "Science: Computers",
-          type: "multiple",
-          difficulty: "easy",
-          question: "What does CPU stand for?",
-          correct_answer: "Central Processing Unit",
-          incorrect_answers: [
+// array con domande
+const questions = [
+  {
+    category: "Science: Computers",
+    type: "multiple",
+    difficulty: "easy",
+    question: "What does CPU stand for?",
+    correct_answer: "Central Processing Unit",
+    incorrect_answers: [
             "Central Process Unit",
             "Computer Personal Unit",
             "Central Processor Unit",
@@ -114,6 +113,11 @@ function countdown() {
     blocco.appendChild(seconds);
     blocco.appendChild(para1);
 
+  let timer;
+
+    // il cerchio che gira
+    function countdown() {
+
     // definisce l'intervallo con cui si riempie il cerchio
     let interval;
 
@@ -130,38 +134,49 @@ function countdown() {
                 interval = 250;
         }
     }
+
     let number = 0;
-    let timer = setInterval(function(){
-
+    timer = setInterval(function(){
     blocco.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
-    number >= 360 ? number += 0 : number += 1;}, interval);
-
-    let myInterval = setInterval(myTimer, 1000);
-    
-    // definisce il countdown
-    let countdownNumber;
-    for (let question of questions){
-        switch (question.difficulty) {
-            case 'easy':
-                countdownNumber = 30;
-                break;
-            case 'medium':
-                countdownNumber = 60;
-                break;
-            case 'hard':
-                countdownNumber = 90;
-        }
-    }
-    seconds.innerHTML = countdownNumber;
-    function myTimer() {
-        countdownNumber -= 1
-        seconds.innerHTML = countdownNumber;
-    function myStop(){
-        clearInterval(myInterval);
-    }
-    if(countdownNumber == 0){
-        myStop();
-        nextQuestion();}
-    };
+    number >= 360 ? number += 0 : number += 1;}, interval); 
 }
- 
+
+
+let myButton = document.getElementById('button');
+myButton.addEventListener('click', function() {
+myStop();
+countdown();
+trovaNumero();
+})
+
+function myStop(){
+  clearInterval(myInterval);
+  clearInterval(timer);
+}
+
+let countdownNumber;
+let myInterval;
+function trovaNumero(){
+for (let question of questions){
+  switch (question.difficulty) {
+      case 'easy':
+          countdownNumber = 30;
+          break;
+      case 'medium':
+          countdownNumber = 60;
+          break;
+      case 'hard':
+          countdownNumber = 90;
+  }
+}
+seconds.innerHTML = countdownNumber;
+
+myInterval = setInterval(function() {
+  countdownNumber -= 1;
+  seconds.innerHTML = countdownNumber;
+  if(countdownNumber == 0){
+    myStop();
+}
+}, 1000);
+
+}
