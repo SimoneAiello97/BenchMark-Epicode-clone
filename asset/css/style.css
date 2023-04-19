@@ -149,7 +149,7 @@ span{
     background-image: url("../img/star.svg");
     height: 46px;
     width: 47px;
-    margin:0 3px;
+    margin:0 8px;
 }
 .star-rating{
     display: inline-flex;
