@@ -176,7 +176,12 @@ myInterval = setInterval(function() {
   seconds.innerHTML = countdownNumber;
   if(countdownNumber == 0){
     myStop();
+    nextQuestion();
+    countdown();
+    trovaNumero();
 }
 }, 1000);
 
 }
+
+
