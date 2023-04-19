@@ -113,8 +113,9 @@ const questions = [
     blocco.appendChild(seconds);
     blocco.appendChild(para1);
 
-    let flag;
-  
+  let timer;
+
+    // il cerchio che gira
     function countdown() {
 
     // definisce l'intervallo con cui si riempie il cerchio
@@ -133,46 +134,49 @@ const questions = [
                 interval = 250;
         }
     }
+
     let number = 0;
-    let timer = setInterval(function(){
-
+    timer = setInterval(function(){
     blocco.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
-    number >= 360 ? number += 0 : number += 1;}, interval);
-
-    let myInterval = setInterval(myTimer, 1000);
-    
-    // definisce il countdown
-    let countdownNumber;
-    for (let question of questions){
-        switch (question.difficulty) {
-            case 'easy':
-                countdownNumber = 30;
-                break;
-            case 'medium':
-                countdownNumber = 60;
-                break;
-            case 'hard':
-                countdownNumber = 90;
-        }
-    }
-    seconds.innerHTML = countdownNumber;
-    function myTimer() {
-        countdownNumber -= 1
-        seconds.innerHTML = countdownNumber;
-    function myStop(){
-        clearInterval(myInterval);
-        clearInterval(timer);
-    }
-    let myButton = document.getElementById('button');
-    let riavvia = function(){
-      flag = false;
-      console.log('cia');
-    }
-    myButton.addEventListener('click', riavvia)
-    if(countdownNumber == 0 || flag == false){
-        flag = true;
-        myStop();
-        // nextQuestion();}
-    }
+    number >= 360 ? number += 0 : number += 1;}, interval); 
 }
-    }
+
+
+let myButton = document.getElementById('button');
+myButton.addEventListener('click', function() {
+myStop();
+countdown();
+trovaNumero();
+})
+
+function myStop(){
+  clearInterval(myInterval);
+  clearInterval(timer);
+}
+
+let countdownNumber;
+let myInterval;
+function trovaNumero(){
+for (let question of questions){
+  switch (question.difficulty) {
+      case 'easy':
+          countdownNumber = 30;
+          break;
+      case 'medium':
+          countdownNumber = 60;
+          break;
+      case 'hard':
+          countdownNumber = 90;
+  }
+}
+seconds.innerHTML = countdownNumber;
+
+myInterval = setInterval(function() {
+  countdownNumber -= 1;
+  seconds.innerHTML = countdownNumber;
+  if(countdownNumber == 0){
+    myStop();
+}
+}, 1000);
+
+}
