@@ -108,15 +108,17 @@ let selectedStars = [];
 
 
 const stars = document.querySelectorAll('.fastar');
+let a = document.querySelectorAll('.fastar');
 
-stars.forEach((star, index) => {
+stars.forEach((star) => {
   star.addEventListener('click', () => {
     if (star.classList.contains('selected')) {
-      star.classList.remove('selected');
-      selectedStars.splice(selectedStars.indexOf(index), 1);
+        
+
+        star.classList.remove('selected');
     } else {
       star.classList.add('selected');
-      selectedStars.push(index);
+      selectedStars.push();
     }
   });
 });
