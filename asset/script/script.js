@@ -93,7 +93,7 @@ bottone.onclick=function(){window.open('https://epicode.com/it/community/', '_bl
 contbottone.append(bottone);
 
 // fare 10 stelle
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 9; i++) {
     let stella5 = document.createElement("div");
     stella5.classList.add("fastar");
     starRating.append(stella5);

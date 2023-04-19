@@ -150,7 +150,11 @@ span{
 }
 /* stelle */
 .fastar{
-    background-image: url("../img/star-filled.svg");
+    
+    background-color: rgb(97, 97, 97);
+    -webkit-mask: url("../img/star.svg") no-repeat center;
+    mask: url(fastar.svg) no-repeat center;
+    
     height: 46px;
     width: 47px;
     margin:0 4px;
@@ -181,7 +185,6 @@ span{
     border-left: 4px;
     border-right: 3px;
     height: 30px;
-
     margin-bottom: 50px;
     width: 620px;
 
@@ -200,7 +203,7 @@ span{
     font-size: 30px;
     border:0px;
     box-shadow: 0px 0px 30px 0px #02c2fdc2, 0px 0px 30px 0px #00eeffcf;
-    margin-bottom: 94px;
+    margin-bottom: 80px;
 }
 
 
