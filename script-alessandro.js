@@ -176,7 +176,12 @@ selectedQuestion.forEach(answer => {
     let buttons = document.createElement("button");
     buttons.textContent = answer;
     bloccoBottoni.appendChild(buttons);
-    buttons.addEventListener("click", nextQuestion);
+    buttons.addEventListener("click", function(){
+      nextQuestion();
+      myStop();
+      countdown();
+      trovaNumero();
+    });
 });
 
 // next question & next risposte
