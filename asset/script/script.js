@@ -78,6 +78,7 @@ bloccoCentro.append(context);
 let input = document.createElement("input");
 input.classList.add("textarea");
 input.placeholder="Write your comment here"
+
 context.append(input);
 
 
