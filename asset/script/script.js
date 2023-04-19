@@ -89,3 +89,24 @@ for (let i = 0; i < 10; i++) {
     stella5.classList.add("fastar");
     starRating.append(stella5);
   }
+
+  
+
+const starContainer = document.querySelector('#star-container');
+let selectedStars = [];
+
+
+
+const stars = document.querySelectorAll('.fastar');
+
+stars.forEach((star, index) => {
+  star.addEventListener('click', () => {
+    if (star.classList.contains('selected')) {
+      star.classList.remove('selected');
+      selectedStars.splice(selectedStars.indexOf(index), 1);
+    } else {
+      star.classList.add('selected');
+      selectedStars.push(index);
+    }
+  });
+});

@@ -69,15 +69,12 @@ span{
 
 
 
-
+/* checkbox */
 .checkbox-container{
     margin-bottom: 35px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
-
 }
 .checkbox-container span{
     color:#E7E7EB;
@@ -91,23 +88,17 @@ span{
     color:white;
     appearance: none;
     border: white;
-  
     border-color: white;
     border-style: solid;
     border: 0.5px 0.5px;
-
-
 }
-
 #miaCheckbox:checked {
     background: white;
 }
 
 
 
-
-
-
+/* bottone prima pagina */
 .cont-bottone{
     display: flex;
     justify-content: end;
@@ -120,13 +111,14 @@ span{
     font-weight: bold;
     font-size: 30px;
     box-shadow: 0px 0px 70px 0px #02c2fdc2, 0px 0px 70px 0px #00eeffcf;
-
-
 }
 
 
 
 
+
+
+/* css seconda pagina */
 .centro{
     text-align: center;
 }
@@ -143,8 +135,7 @@ span{
     margin:50px 0;
     font-weight: bolder;
 }
-
-
+/* stelle */
 .fastar{
     background-image: url("../img/star.svg");
     height: 46px;
@@ -156,11 +147,12 @@ span{
     justify-content: center;
     margin-bottom: 10px;
 }
+.fastar.selected{
+    background-image: url("../img/star-filled.svg");
+}
 
 
-
-
-
+/* text area */
 .cont-text{
     color: aliceblue;
 }
@@ -179,6 +171,7 @@ span{
     width: 620px;
 
 }
+/* bottone */
 .cont-bottone2{
     display: flex;
     justify-content:center;
@@ -191,10 +184,7 @@ span{
     font-weight: bold;
     font-size: 30px;
     box-shadow: 0px 0px 30px 0px #02c2fdc2, 0px 0px 30px 0px #00eeffcf;
-    margin-bottom: 109px;
-
-
-
+    margin-bottom: 134px;
 }
 
 
