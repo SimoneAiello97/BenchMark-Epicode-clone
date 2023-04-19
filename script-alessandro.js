@@ -100,6 +100,9 @@ const questions = [
   
   //console.log(questions);
   //CREAZIONE ELEMENTI/STRUTTURA PAGINA
+
+  countdown();
+  trovaNumero();
   
   // TEMPORANEO
   let logo = document.querySelector('#logo');  
@@ -189,7 +192,12 @@ function nextQuestion() {
       let buttons = document.createElement("button");
       buttons.textContent = answer;
       bloccoBottoni.appendChild(buttons);
-      buttons.addEventListener("click", nextQuestion);
+      buttons.addEventListener("click", function(){
+        nextQuestion();
+        myStop();
+        countdown();
+        trovaNumero();
+      });
   });
     footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
   } else {
