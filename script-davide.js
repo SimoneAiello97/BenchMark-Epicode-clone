@@ -1,21 +1,21 @@
-/*
-function countdown() {
-  let timerContainer = document.createElement("div");
-  timerContainer.id = "timer-container";
-  let temp = document.querySelector('#temp')
-  temp.appendChild(timerContainer);
 
-  let timer = document.createElement("div");
-  timer.classList.add("timer");
-  timer.id = "timer";
-  timerContainer.append(timer);
+      // creazione blocchi del dom
+    let blocco = document.getElementById("timer");
+    let para = document.createElement('p');
+    let para1 = document.createElement('p');
+    let seconds = document.getElementById('seconds');
+    para.innerText = 'SECONDS';
+    para1.innerText = 'REMAINING';
+    para.classList.add('para');
+    para1.classList.add('para');
+    blocco.appendChild(para);
+    blocco.appendChild(seconds);
+    blocco.appendChild(para1);
 
-  let seconds = document.createElement("p");
-  seconds.classList.add("z-index");
-  seconds.id = "seconds";
-  timer.append(seconds);
-  
-  
+  let timer;
+
+    // il cerchio che gira
+    function countdown() {
 
     // definisce l'intervallo con cui si riempie il cerchio
     let interval;
@@ -33,101 +33,52 @@ function countdown() {
                 interval = 250;
         }
     }
-    let number = 0;
-    let ced = setInterval(function(){
 
+    let number = 0;
+    timer = setInterval(function(){
     blocco.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
-    number >= 360 ? number += 0 : number += 1;}, interval);
+    number >= 360 ? number += 0 : number += 1;}, interval); 
+}
 
-    let myInterval = setInterval(myTimer, 1000);
-    
-    // definisce il countdown
-    let countdownNumber;
-    for (let question of questions){
-        switch (question.difficulty) {
-            case 'easy':
-                countdownNumber = 30;
-                break;
-            case 'medium':
-                countdownNumber = 60;
-                break;
-            case 'hard':
-                countdownNumber = 90;
-        }
-    }
-    seconds.innerHTML = parseInt(countdownNumber);
-    function myTimer() {
-        countdownNumber -= 1
-        seconds.innerHTML = countdownNumber;
-      if(countdownNumber === 0){
-        myStop();
-        }
-      }
-      function myStop(){
-          clearInterval(myInterval);
-          let children = timerContainer.querySelectorAll('*')
-          children.forEach(child=>child.textContent= null)
 
-      }
-    };
-    function stop () {
-      let children = timerContainer.querySelectorAll('*')
-          children.forEach(child=>child.textContent='')
-    }
-*/
+// let myButton = document.getElementById('button');
+// myButton.addEventListener('click', function() {
+// myStop();
+// countdown();
+// trovaNumero();
+// })
 
+function myStop(){
+  clearInterval(myInterval);
+  clearInterval(timer);
+}
+
+let countdownNumber;
 let myInterval;
-let timerInterval;
-
-function startQuiz() {
-    // Creazione del timer
-    let timerContainer = document.createElement("div");
-    timerContainer.id = "timer-container";
-    let temp = document.querySelector('#temp')
-    temp.appendChild(timerContainer);
-  
-    let timer = document.createElement("div");
-    timer.classList.add("timer");
-    timer.id = "timer";
-    timerContainer.append(timer);
-  
-    let seconds = document.createElement("p");
-    seconds.classList.add("z-index");
-    seconds.id = "seconds";
-    timer.append(seconds);
-  
-    // Imposta il countdown
-    let countdownNumber = 30;
-    seconds.textContent = countdownNumber;
-  
-    // Inizia l'animazione del cerchio
-    let number = 0;
-    let interval = 83;
-    let timerInterval = setInterval(function(){
-      timer.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
-      number >= 360 ? number += 0 : number += 1;
-    }, interval);
-  
-    // Definisce il countdown
-    let myInterval = setInterval(myTimer, 1000);
-    function myTimer() {
-      countdownNumber -= 1
-      seconds.textContent = countdownNumber;
-      if(countdownNumber === 0){
-        myStop();
-      }
-    }
-    function myStop(){
-      clearInterval(myInterval);
-      clearInterval(timerInterval);
-      timerContainer.remove();
-      nextQuestion()
-    }
-    
+function trovaNumero(){
+for (let question of questions){
+  switch (question.difficulty) {
+      case 'easy':
+          countdownNumber = 30;
+          break;
+      case 'medium':
+          countdownNumber = 60;
+          break;
+      case 'hard':
+          countdownNumber = 90;
   }
+}
+seconds.innerHTML = countdownNumber;
 
-  function ferma(){
-    document.querySelector('#timer-container').remove()
-    nextQuestion()
-  }
+myInterval = setInterval(function() {
+  countdownNumber -= 1;
+  seconds.innerHTML = countdownNumber;
+  if(countdownNumber == 0){
+    myStop();
+    nextQuestion();
+    countdown();
+    trovaNumero();
+}
+}, 1000);
 
+}

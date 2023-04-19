@@ -1,3 +1,4 @@
+//script alessandro
 const questions = [
     {
       category: "Science: Computers",
@@ -97,6 +98,26 @@ const questions = [
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
   ];
+//
+
+
+// creazione blocchi del dom
+let blocco = document.getElementById("timer");
+let para = document.createElement('p');
+let para1 = document.createElement('p');
+let seconds = document.getElementById('seconds');
+para.innerText = 'SECONDS';
+para1.innerText = 'REMAINING';
+para.classList.add('para');
+para1.classList.add('para');
+blocco.appendChild(para);
+blocco.appendChild(seconds);
+blocco.appendChild(para1);
+// definisce l'intervallo con cui si riempie il cerchio
+let interval;
+let timer;
+let countdownNumber;
+let myInterval;
 
 //dichiarazione variabili globali
 let logo;
@@ -118,20 +139,67 @@ let numeroCasuale
 let selectedQuestion
 let givenAnswer = [];
 let correctAnswer
+let correctCount = 0;
+let wrongCount = 0;
+  
+//distruzione prima pagina e creazione seconda
+function verificaCheckbox() {
+  let casella = document.getElementById('miaCheckbox');
+  if (!casella.checked) {
+      alert('Per favore, seleziona la casella per continuare');
+  }else if(casella.checked){
+      const element = document.getElementById("first");
+      element.remove();
+      creation();
+      countdown();
+      trovaNumero();
+      document.querySelector("#timer-container").style.display = "flex";
+  }
+}
+
+
 //let displayedQuestions = [];//da eliminare + richiamo
 
-  creation();
+  //creation();
   //lancio funzioni timer
-  countdown();
-  trovaNumero();
+  //countdown();
+  //trovaNumero();
   //
+  //randomicizzare ordine risposte
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  } 
+
+  //funzione di cattura testo della risposta data
+  function handleButtonClick(event) {
+    let buttonText = event.target.textContent;
+    console.log(buttonText);
+    givenAnswer.push(buttonText);
+
+    //displayedQuestions.push(allQuestions[numeroCasuale]); da eliminare + dichiarazione
+}
+  
+//funzione di controllo
+function controlAnswer() {
+    
+    for (let i = 0; i < givenAnswer.length; i++) {
+        if (onlyCorrectAnswer.includes(givenAnswer[i])) {
+        correctCount++;
+        } else {
+        wrongCount++;
+        }
+    }
+  
+    console.log(correctCount);
+    console.log(wrongCount);
+}
   function creation() {
     //console.log(questions);
     //CREAZIONE ELEMENTI/STRUTTURA PAGINA
     
     // TEMPORANEO
     logo = document.querySelector('#logo');  
-    bodyTemp = document.querySelector('#temp');
+    bodyTemp = document.querySelector('.background');
     //   creazione contenitore
     allContent = document.createElement("div");
     allContent.id = "container";
@@ -184,11 +252,8 @@ let correctAnswer
     selectedQuestion = allAnswers[numeroCasuale]; // risposte per le relativa domanda
   
   
-    //randomicizzare ordine risposte
-    function shuffle(array) {
-      array.sort(() => Math.random() - 0.5);
-    }    
-    shuffle(selectedQuestion);
+     
+      shuffle(selectedQuestion);
   
     // testo domanda  display
     questionsTitle.textContent = allQuestions[numeroCasuale];
@@ -212,74 +277,124 @@ let correctAnswer
         });
       });
 
-    // next question & next risposte
-    function nextQuestion() {
-        //eliminazione domanda(e relative risposte) già vista
-        allQuestions.splice(numeroCasuale, 1);
-        allAnswers.splice(numeroCasuale, 1);
-        questions.splice(numeroCasuale, 1);
-        //creazione nuovo numero casuale
-        if (allQuestions.length !== 0){
-        numeroCasuale = Math.floor(Math.random() * allQuestions.length);
-        //nuovo shuffle risposte
-        selectedQuestion = allAnswers[numeroCasuale];
-        shuffle(selectedQuestion);
-        //console.log(numeroCasuale);
-        //console.log(questions);
-        //console.log(allAnswers);
-        //ricarca e creazione array per controllo risposte
-        correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
-        onlyCorrectAnswer.push(correctAnswer);
-        console.log(onlyCorrectAnswer);
-        //nuova domanda da mostrare
-        questionsTitle.textContent = allQuestions[numeroCasuale];
-        //distruzione vecchi bottoni
-        let eliminareBottoni = document.querySelectorAll("button");
-        eliminareBottoni.forEach((button) => button.remove());
-        //creazioni nuovi bottoni
-        allAnswers[numeroCasuale].forEach(answer => {
-            let buttons = document.createElement("button");
-            buttons.textContent = answer;
-            bloccoBottoni.appendChild(buttons);
-            buttons.addEventListener("click", function() {
-            handleButtonClick(event);
-            nextQuestion();
-            myStop();
-            countdown();
-            trovaNumero();
-            });
-        }); 
-        footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
-        //countdown();
-        } else {
-        controlAnswer();
-        allContent.remove();
-        //nota: funzione pagina 3
-        }
-    }
-    //funzione di cattura testo della risposta data
-    function handleButtonClick(event) {
-        let buttonText = event.target.textContent;
-        console.log(buttonText);
-        givenAnswer.push(buttonText);
-        //displayedQuestions.push(allQuestions[numeroCasuale]); da eliminare + dichiarazione
-    }
-      
-    //funzione di controllo
-    function controlAnswer() {
-        let correctCount = 0;
-        let wrongCount = 0;
-      
-        for (let i = 0; i < givenAnswer.length; i++) {
-          if (onlyCorrectAnswer.includes(givenAnswer[i])) {
-            correctCount++;
-          } else {
-            wrongCount++;
-          }
-        }
-      
-        console.log(correctCount);
-        console.log(wrongCount);
-    }
+    
+    
   }//chiusura  creation
+  // next question & next risposte
+  function nextQuestion() {
+    //eliminazione domanda(e relative risposte) già vista
+    allQuestions.splice(numeroCasuale, 1);
+    allAnswers.splice(numeroCasuale, 1);
+    questions.splice(numeroCasuale, 1);
+    //creazione nuovo numero casuale
+    if (allQuestions.length !== 0){
+    numeroCasuale = Math.floor(Math.random() * allQuestions.length);
+    //nuovo shuffle risposte
+    selectedQuestion = allAnswers[numeroCasuale];
+    shuffle(selectedQuestion);
+    //console.log(numeroCasuale);
+    //console.log(questions);
+    //console.log(allAnswers);
+    //ricarca e creazione array per controllo risposte
+    correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
+    onlyCorrectAnswer.push(correctAnswer);
+    console.log(onlyCorrectAnswer);
+    //nuova domanda da mostrare
+    questionsTitle.textContent = allQuestions[numeroCasuale];
+    //distruzione vecchi bottoni
+    let eliminareBottoni = document.querySelectorAll("button");
+    eliminareBottoni.forEach((button) => button.remove());
+    //creazioni nuovi bottoni
+    allAnswers[numeroCasuale].forEach(answer => {
+        let buttons = document.createElement("button");
+        buttons.textContent = answer;
+        bloccoBottoni.appendChild(buttons);
+        buttons.addEventListener("click", function() {
+        handleButtonClick(event);
+        nextQuestion();
+        myStop();
+        countdown();
+        trovaNumero();
+        });
+    }); 
+    footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
+    //countdown();
+    } else {
+    controlAnswer();
+    allContent.remove();
+    blocco.remove();
+    //nota: funzione pagina 3
+    }
+    }
 
+//script davide
+
+      
+  
+      // il cerchio che gira
+      function countdown() {
+  
+
+  
+      // SELEZIONARE LA DOMANDA GIUSTA
+      for (let question of questions){
+          switch (question.difficulty) {
+              case 'easy':
+                  interval = 83;
+                  break;
+              case 'medium':
+                  interval = 166;
+                  break;
+              case 'hard':
+                  interval = 250;
+          }
+      }
+  
+      let number = 0;
+      timer = setInterval(function(){
+      blocco.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
+      number >= 360 ? number += 0 : number += 1;}, interval); 
+  }
+  
+  
+  // let myButton = document.getElementById('button');
+  // myButton.addEventListener('click', function() {
+  // myStop();
+  // countdown();
+  // trovaNumero();
+  // })
+  
+  function myStop(){
+    clearInterval(myInterval);
+    clearInterval(timer);
+  }
+  
+  
+  function trovaNumero(){
+  for (let question of questions){
+    switch (question.difficulty) {
+        case 'easy':
+            countdownNumber = 30;
+            break;
+        case 'medium':
+            countdownNumber = 60;
+            break;
+        case 'hard':
+            countdownNumber = 90;
+    }
+  }
+  seconds.innerHTML = countdownNumber;
+  
+  myInterval = setInterval(function() {
+    countdownNumber -= 1;
+    seconds.innerHTML = countdownNumber;
+    if(countdownNumber == 0){
+      wrongCount++;
+      myStop();
+      nextQuestion();
+      countdown();
+      trovaNumero();
+  }
+  }, 1000);
+  
+  }
