@@ -97,187 +97,174 @@ const questions = [
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
   ];
-  
-  //console.log(questions);
-  //CREAZIONE ELEMENTI/STRUTTURA PAGINA
-  
-  // TEMPORANEO
-  let logo = document.querySelector('#logo');  
-  let bodyTemp = document.querySelector('#temp');
-  //   creazione contenitore
-  let allContent = document.createElement("div");
-  allContent.id = "container";
-  bodyTemp.appendChild(allContent);
-  
-  // creazione blocco domande
-  let bloccoDomanda = document.createElement("div");
-  bloccoDomanda.id = "question-container";
-  allContent.appendChild(bloccoDomanda);
-  
-  let questionsTitle = document.createElement("p");
-  questionsTitle.className = "questions";
-  allContent.append(bloccoDomanda);
-  bloccoDomanda.appendChild(questionsTitle);
-  
-  //  creazione  blocco risposta
-  let bloccoRisposta = document.createElement("div");
-  bloccoRisposta.className = "answers-container";
-  allContent.append(bloccoRisposta);
-  
-  // creazione bottoni
-  let bloccoBottoni  =  document.createElement("div");
-  bloccoBottoni.id = "button-container"
-  bloccoRisposta.append(bloccoBottoni);
-  
-  //  creazione blocco footer
-  let footer = document.createElement("div");
-  footer.id = "footer";
-  allContent.append(footer);
-  let footerText = document.createElement("p");
-  footer.append(footerText);
-  footerText.textContent = `QUESTION 1`
-  let span = document.createElement("span");
-  footer.append(span);
-  span.textContent = "/10"
 
-  
-
-// CODICE
-
-//  array domande risposte
+//dichiarazione variabili globali
+let logo;
+let bodyTemp;
+let allContent;
+let bloccoDomanda;
+let questionsTitle;
+let bloccoRisposta;
+let bloccoBottoni;
+let footer;
+let footerText;
+let span;
+    //  array domande risposte
 let allAnswers =[];
 let allQuestions = [];
 let onlyCorrectAnswer = [];
 
-
-
-
-for (let domanda of questions) {
-  allQuestions.push(domanda.question)
-  domanda.incorrect_answers.push(domanda.correct_answer)
-  allAnswers.push(domanda.incorrect_answers)
-  
-};
-
-//numero casuale per randomicizzazione domande
-let numeroCasuale = Math.floor(Math.random() * allQuestions.length);
-
-let selectedQuestion = allAnswers[numeroCasuale];
-
-//randomicizzare ordine risposte
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
-}    
-shuffle(selectedQuestion);
-
-// testo domanda  display
-questionsTitle.textContent = allQuestions[numeroCasuale];
-
-//CODICE FUNZIONANTE INIZIO
-/* //creazione bottoni per ogni risposta, SOLO PRIMA DOMANDA        
-selectedQuestion.forEach(answer => {
-  let buttons = document.createElement("button");
-  buttons.textContent = answer;
-  bloccoBottoni.appendChild(buttons);
-  buttons.addEventListener("click", nextQuestion);
-}); 
-
-// next question & next risposte  
-function nextQuestion() { 
-  allQuestions.splice(numeroCasuale, 1);
-  allAnswers.splice(numeroCasuale, 1);
-  if (allQuestions.length !== 0){
-    numeroCasuale = Math.floor(Math.random() * allQuestions.length);
-    questionsTitle.textContent = allQuestions[numeroCasuale];
-    let eliminareBottoni = document.querySelectorAll("button");
-    eliminareBottoni.forEach((button) => button.remove());
-    allAnswers[numeroCasuale].forEach(answer => {
-      let buttons = document.createElement("button");
-      buttons.textContent = answer;
-      bloccoBottoni.appendChild(buttons);
-      buttons.addEventListener("click", function()  {
-          nextQuestion();
-          //countAnswers();
-        })  
-      });   
-      footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
-      //countdown();
-    } else {
-      console.log('FINITE LE DOMANDE');
-    }  
-  }    */
-//CODICE FUNZIONANTE FINE
-
+let numeroCasuale
+let selectedQuestion
 let givenAnswer = [];
-let displayedQuestions = [];
-//let buttons;
+let correctAnswer
+//let displayedQuestions = [];//da eliminare + richiamo
 
-//creazione bottoni per ogni risposta, SOLO PRIMA DOMANDA
-selectedQuestion.forEach(answer => {
-  //onlyCorrectAnswer.push(allAnswers[numeroCasuale].indexOf(questions[numeroCasuale].correct_answer));
-  let buttons = document.createElement("button");
-  buttons.textContent = answer;
-  bloccoBottoni.appendChild(buttons);
-  buttons.addEventListener("click", function() {
-    handleButtonClick(event);
-    nextQuestion();
-  });
-});
+  creation();
+  function creation() {
+    //console.log(questions);
+    //CREAZIONE ELEMENTI/STRUTTURA PAGINA
+    
+    // TEMPORANEO
+    logo = document.querySelector('#logo');  
+    bodyTemp = document.querySelector('#temp');
+    //   creazione contenitore
+    allContent = document.createElement("div");
+    allContent.id = "container";
+    bodyTemp.appendChild(allContent);
+    
+    // creazione blocco domande
+    bloccoDomanda = document.createElement("div");
+    bloccoDomanda.id = "question-container";
+    allContent.appendChild(bloccoDomanda);
+    
+    questionsTitle = document.createElement("p");
+    questionsTitle.className = "questions";
+    allContent.append(bloccoDomanda);
+    bloccoDomanda.appendChild(questionsTitle);
+    
+    //  creazione  blocco risposta
+    bloccoRisposta = document.createElement("div");
+    bloccoRisposta.className = "answers-container";
+    allContent.append(bloccoRisposta);
+    
+    // creazione bottoni
+    bloccoBottoni  =  document.createElement("div");
+    bloccoBottoni.id = "button-container"
+    bloccoRisposta.append(bloccoBottoni);
+    
+    //  creazione blocco footer
+    footer = document.createElement("div");
+    footer.id = "footer";
+    allContent.append(footer);
+    footerText = document.createElement("p");
+    footer.append(footerText);
+    footerText.textContent = `QUESTION 1`
+    span = document.createElement("span");
+    footer.append(span);
+    span.textContent = "/10"
 
-// next question & next risposte
-function nextQuestion() {  
+    // CODICE
+    for (let domanda of questions) {
+      allQuestions.push(domanda.question)
+      domanda.incorrect_answers.push(domanda.correct_answer)
+      allAnswers.push(domanda.incorrect_answers)
+      
+    };
   
-  allQuestions.splice(numeroCasuale, 1);
-  allAnswers.splice(numeroCasuale, 1);
-  if (allQuestions.length !== 0){
+    //numero casuale per randomicizzazione domande
     numeroCasuale = Math.floor(Math.random() * allQuestions.length);
-    //prova
-    let correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
-    onlyCorrectAnswer.push(correctAnswer);
-    //
+  
+    selectedQuestion = allAnswers[numeroCasuale]; // risposte per le relativa domanda
+  
+  
+    //randomicizzare ordine risposte
+    function shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+    }    
+    shuffle(selectedQuestion);
+  
+    // testo domanda  display
     questionsTitle.textContent = allQuestions[numeroCasuale];
-    let eliminareBottoni = document.querySelectorAll("button");
-    eliminareBottoni.forEach((button) => button.remove());
-    allAnswers[numeroCasuale].forEach(answer => {
-      let buttons = document.createElement("button");
-      buttons.textContent = answer;
-      bloccoBottoni.appendChild(buttons);
-      buttons.addEventListener("click", function() {
-        handleButtonClick(event);
-        nextQuestion();
+    
+    //controllo prima domanda
+    correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
+    onlyCorrectAnswer.push(correctAnswer);
+
+    //creazione bottoni per ogni risposta, SOLO PRIMA DOMANDA
+      selectedQuestion.forEach(answer => {
+        let buttons = document.createElement("button");
+        buttons.textContent = answer;
+        bloccoBottoni.appendChild(buttons);
+        buttons.addEventListener("click", function() {
+          handleButtonClick(event);
+          controlAnswer();
+          nextQuestion();
+        });
       });
-    }); 
-    footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
-    //countdown();
-  } else {
-    console.log('FINITE LE DOMANDE');
-    controlAnswer();
-  }
-}
 
-function handleButtonClick(event) {
-  let buttonText = event.target.textContent;
-  console.log(buttonText);
-  givenAnswer.push(buttonText);
-  displayedQuestions.push(allQuestions[numeroCasuale]);
-  }
-
-console.log(givenAnswer);
-console.log(displayedQuestions);
-
-function controlAnswer() {
-  let correctCount = 0;
-  let wrongCount = 0;
-
-  for (let i = 0; i < givenAnswer.length; i++) {
-    if (onlyCorrectAnswer.includes(givenAnswer[i])) {
-      correctCount++;
-    } else {
-      wrongCount++;
+    // next question & next risposte
+    function nextQuestion() {  
+        //eliminazione domanda(e relative risposte) già vista
+        allQuestions.splice(numeroCasuale, 1);
+        allAnswers.splice(numeroCasuale, 1);
+        questions.splice(numeroCasuale, 1);
+        //creazione nuovo numero casuale
+        if (allQuestions.length !== 0){
+        numeroCasuale = Math.floor(Math.random() * allQuestions.length);
+        //console.log(numeroCasuale);
+        //console.log(questions);
+        //console.log(allAnswers);
+        //ricarca e creazione array per controllo risposte
+        correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
+        onlyCorrectAnswer.push(correctAnswer);
+        console.log(onlyCorrectAnswer);
+        //nuova domanda da mostrare
+        questionsTitle.textContent = allQuestions[numeroCasuale];
+        //distruzione vecchi bottoni
+        let eliminareBottoni = document.querySelectorAll("button");
+        eliminareBottoni.forEach((button) => button.remove());
+        //creazioni nuovi bottoni
+        allAnswers[numeroCasuale].forEach(answer => {
+            let buttons = document.createElement("button");
+            buttons.textContent = answer;
+            bloccoBottoni.appendChild(buttons);
+            buttons.addEventListener("click", function() {
+            handleButtonClick(event);
+            nextQuestion();
+            });
+        }); 
+        footerText.textContent = `QUESTION ${Math.abs(allQuestions.length - 10)+1}`
+        //countdown();
+        } else {
+        controlAnswer();
+        allContent.remove();
+        //nota: funzione pagina 3
+        }
     }
-  }
 
-  console.log(correctCount);
-  console.log(wrongCount);
-}
-
+    //funzione di cattura testo della risposta data
+    function handleButtonClick(event) {
+        let buttonText = event.target.textContent;
+        console.log(buttonText);
+        givenAnswer.push(buttonText);
+        //displayedQuestions.push(allQuestions[numeroCasuale]); da eliminare + dichiarazione
+    }
+      
+    //funzione di controllo
+    function controlAnswer() {
+        let correctCount = 0;
+        let wrongCount = 0;
+      
+        for (let i = 0; i < givenAnswer.length; i++) {
+          if (onlyCorrectAnswer.includes(givenAnswer[i])) {
+            correctCount++;
+          } else {
+            wrongCount++;
+          }
+        }
+      
+        console.log(correctCount);
+        console.log(wrongCount);
+    }
+}//chiusura  creation
