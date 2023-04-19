@@ -49,11 +49,17 @@ bloccoCentro.append(titolo);
 
 let subtitolo = document.createElement("p");
 subtitolo.classList.add("subtitle-star");
-subtitolo.textContent=`From 0 to 10,how likely are you to recommend Epicode to a friend or acolleague?`;
+subtitolo.textContent=`From 0 to 10,how likely are you to recommend EPICODE`;
 bloccoCentro.append(subtitolo);
+
+let subtitolo2 = document.createElement("p");
+subtitolo2.classList.add("subtitle-star2");
+subtitolo2.textContent=`to a friend or a colleague?`;
+subtitolo.append(subtitolo2);
 
 let starRating = document.createElement("div");
 starRating.classList.add("star-rating");
+
 bloccoCentro.append(starRating);
 
 let stella5 = document.createElement("div");
@@ -61,7 +67,7 @@ stella5.classList.add("fastar");
 starRating.append(stella5);
 
 let subp = document.createElement("p");
-subp.classList.add("subtitle-star");
+subp.classList.add("subtitle-star3");
 subp.textContent="Leave us an open feedback about your experience so far";
 bloccoCentro.append(subp);
 
@@ -71,6 +77,7 @@ bloccoCentro.append(context);
 
 let input = document.createElement("input");
 input.classList.add("textarea");
+input.placeholder="Write your comment here"
 context.append(input);
 
 
@@ -81,20 +88,23 @@ bloccoCentro.append(contbottone);
 let bottone = document.createElement("button");
 bottone.classList.add("bottone2");
 bottone.textContent="MORE INFO";
+bottone.onclick=function(){window.open('https://epicode.com/it/community/', '_blank');}
+
 contbottone.append(bottone);
 
-
+// fare 10 stelle
 for (let i = 0; i < 10; i++) {
     let stella5 = document.createElement("div");
     stella5.classList.add("fastar");
     starRating.append(stella5);
   }
 
-  
 
+
+
+// rating stars
 const starContainer = document.querySelector('#star-container');
 let selectedStars = [];
-
 
 
 const stars = document.querySelectorAll('.fastar');

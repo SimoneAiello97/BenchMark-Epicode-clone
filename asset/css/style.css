@@ -124,6 +124,19 @@ span{
 }
 .subtitle-star{
     font-family: 'Outfit', sans-serif;
+    font-size: 29px;
+    color:#E7E7EB;
+    margin-top:50px;
+}
+.subtitle-star2{
+    font-family: 'Outfit', sans-serif;
+    font-size: 25px;
+    color:#E7E7EB;
+    margin-bottom:50px;
+    margin-top: 10px;
+}
+.subtitle-star3{
+    font-family: 'Outfit', sans-serif;
     font-size: 25px;
     color:#E7E7EB;
     margin:50px 0;
@@ -140,7 +153,7 @@ span{
     background-image: url("../img/star.svg");
     height: 46px;
     width: 47px;
-    margin:0 8px;
+    margin:0 4px;
 }
 .star-rating{
     display: inline-flex;
@@ -183,8 +196,9 @@ span{
     height:70px;
     font-weight: bold;
     font-size: 30px;
+    border:0px;
     box-shadow: 0px 0px 30px 0px #02c2fdc2, 0px 0px 30px 0px #00eeffcf;
-    margin-bottom: 134px;
+    margin-bottom: 94px;
 }
 
 
