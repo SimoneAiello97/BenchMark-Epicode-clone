@@ -142,12 +142,12 @@ const questions = [
 }
 
 
-let myButton = document.getElementById('button');
-myButton.addEventListener('click', function() {
-myStop();
-countdown();
-trovaNumero();
-})
+// let myButton = document.getElementById('button');
+// myButton.addEventListener('click', function() {
+// myStop();
+// countdown();
+// trovaNumero();
+// })
 
 function myStop(){
   clearInterval(myInterval);
