@@ -99,6 +99,8 @@ const questions = [
     },
   ];
 //
+
+
 // creazione blocchi del dom
 let blocco = document.getElementById("timer");
 let para = document.createElement('p');
@@ -140,12 +142,28 @@ let correctAnswer
 let correctCount = 0;
 let wrongCount = 0;
   
+//distruzione prima pagina e creazione seconda
+function verificaCheckbox() {
+  let casella = document.getElementById('miaCheckbox');
+  if (!casella.checked) {
+      alert('Per favore, seleziona la casella per continuare');
+  }else if(casella.checked){
+      const element = document.getElementById("first");
+      element.remove();
+      creation();
+      countdown();
+      trovaNumero();
+      document.querySelector("#timer-container").style.display = "flex";
+  }
+}
+
+
 //let displayedQuestions = [];//da eliminare + richiamo
 
-  creation();
+  //creation();
   //lancio funzioni timer
-  countdown();
-  trovaNumero();
+  //countdown();
+  //trovaNumero();
   //
   //randomicizzare ordine risposte
   function shuffle(array) {
@@ -181,7 +199,7 @@ function controlAnswer() {
     
     // TEMPORANEO
     logo = document.querySelector('#logo');  
-    bodyTemp = document.querySelector('#temp');
+    bodyTemp = document.querySelector('.background');
     //   creazione contenitore
     allContent = document.createElement("div");
     allContent.id = "container";

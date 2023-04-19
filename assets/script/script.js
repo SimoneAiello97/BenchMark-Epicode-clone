@@ -5,5 +5,8 @@ function verificaCheckbox() {
     }else if(casella.checked){
         const element = document.getElementById("first");
         element.remove();
+        creation();
+        countdown();
+        trovaNumero();
     }
 }
