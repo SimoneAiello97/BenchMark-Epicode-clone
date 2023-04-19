@@ -212,6 +212,9 @@ let correctAnswer
         //creazione nuovo numero casuale
         if (allQuestions.length !== 0){
         numeroCasuale = Math.floor(Math.random() * allQuestions.length);
+        //nuovo shuffle risposte
+        selectedQuestion = allAnswers[numeroCasuale];
+        shuffle(selectedQuestion);
         //console.log(numeroCasuale);
         //console.log(questions);
         //console.log(allAnswers);
