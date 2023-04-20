@@ -75,9 +75,16 @@ secondP.textContent = "The summary of your answers:"
 
 pResult1.textContent =  "Correct"
 pResult2.textContent = "%"
-pResult3.textContent = "/10 questions"
+pResult3.textContent = `${correctCount}/10 questions`
 pResult4.textContent =   "Wrong";
 pResult5.textContent = "%";
-pResult6.textContent =  "/10 questions"
+pResult6.textContent =  `${wrongCount}/10 questions`
 
 buttonRate.textContent = "RATE US";
+
+//dare valore al grafico
+secondResult.style.backgroundImage = `conic-gradient(#00ffff ${correctCount * 36}deg, #d20094 0deg)`;
+
+function destruction() {
+    
+}

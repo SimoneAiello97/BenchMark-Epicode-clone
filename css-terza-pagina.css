@@ -31,6 +31,33 @@
 .questions {
     font-size: 1.2rem;
 }
+.perc-result:last-of-type{
+    text-align: right;
+}
+#chart{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: conic-gradient(#00ffff 36deg, #d20094 0deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#chart::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-repeat: none;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
 
 /* button */
 #rate button {
@@ -44,3 +71,4 @@
 #rate{
     margin-bottom: 3rem;
 }
+
