@@ -1,13 +1,18 @@
+
+let corpo4 = document.querySelector('.background');
+let centro4 = document.createElement("div");
+centro4.classList.add("centro");
+
+
 function pagina4() {
   
 
 //   creazione contenitore
-let corpo4 = document.querySelector('#background');
+
 
 
 // creazione blocco centrale
-let centro4 = document.createElement("div");
-centro4.classList.add("centro");
+
 corpo4.append(centro4);
 
 let titolo = document.createElement("p");
@@ -87,4 +92,3 @@ stars.forEach((star,index1) =>{
 
 }
 
-pagina4();
