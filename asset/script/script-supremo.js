@@ -192,7 +192,6 @@ function controlAnswer() {
         wrongCount++;
         }
     }
-
     console.log(correctCount);
     console.log(wrongCount);
 }
@@ -342,7 +341,7 @@ function controlAnswer() {
   
       // il cerchio che gira
       function countdown() {
-  
+        
 
   
       // SELEZIONARE LA DOMANDA GIUSTA
@@ -359,9 +358,16 @@ function controlAnswer() {
           }
   
       let number = 0;
-      timer = setInterval(function(){
+      
+
+      if (correctCount+wrongCount === onlyCorrectAnswer.length){
+          return
+        }
+        else{
+          timer = setInterval(function(){
       blocco.style.backgroundImage = `conic-gradient(rgba(255, 255, 255, 0.5) ${number}deg, #00ffff 0deg)`;
       number >= 360 ? number += 0 : number += 1;}, interval); 
+        }
   }
   
   
@@ -391,7 +397,10 @@ function controlAnswer() {
     }
   seconds.innerHTML = countdownNumber;
   
-  myInterval = setInterval(function() {
+  if (correctCount+wrongCount === onlyCorrectAnswer.length){
+    return
+  }
+  else{myInterval = setInterval(function() {
     countdownNumber -= 1;
     seconds.innerHTML = countdownNumber;
     if(countdownNumber === 0){
@@ -400,9 +409,9 @@ function controlAnswer() {
       nextQuestion();
       countdown();
       trovaNumero();
-
+    
   }
     
   }, 1000);
-  
+}
   }
