@@ -114,7 +114,6 @@ buttonRate.textContent = "RATE US";
 
 //dare valore al grafico
 secondResult.style.backgroundImage = `conic-gradient(#d20094 ${wrongCount * 36}deg, #00ffff 0deg)`;
-secondResult.style.transitionDuration = '2s';
 
 
 buttonRate.addEventListener('click', function(){
