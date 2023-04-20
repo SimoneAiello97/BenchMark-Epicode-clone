@@ -269,7 +269,7 @@ function controlAnswer() {
         bloccoBottoni.appendChild(buttons);
         buttons.addEventListener("click", function() {
           handleButtonClick(event);
-          controlAnswer();
+          // controlAnswer();
           myStop()
           nextQuestion();
           countdown();
@@ -300,6 +300,8 @@ function controlAnswer() {
     correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
     onlyCorrectAnswer.push(correctAnswer);
     console.log(onlyCorrectAnswer);
+    console.log(correctCount);
+    console.log(wrongCount);
     //nuova domanda da mostrare
     questionsTitle.textContent = allQuestions[numeroCasuale];
     //distruzione vecchi bottoni
@@ -325,6 +327,7 @@ function controlAnswer() {
     allContent.remove();
     blocco.remove();
     //nota: funzione pagina 3
+    terzaPagina();
     }
     }
 

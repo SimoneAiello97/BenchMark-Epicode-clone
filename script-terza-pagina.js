@@ -1,6 +1,9 @@
-let bodyTemp = document.querySelector('.background');
 
+
+// let bodyTemp = document.querySelector('.background');
 let newContainer = document.createElement('div');
+
+
 newContainer.id = 'content-container';
 
 let firstSection = document.createElement('div');
@@ -47,6 +50,17 @@ pResult6.classList.add("questions");
 
 let buttonRate = document.createElement("button");
 
+let congrat = document.createElement('p');
+congrat.classList.add('congrat');
+
+let passed = document.createElement('p');
+passed.classList.add('passed');
+
+let certificate = document.createElement('p');
+certificate.classList.add('certificate');
+
+function terzaPagina(){
+
 //append
 bodyTemp.append(newContainer);
 
@@ -69,22 +83,47 @@ thirdResult.append(pResult6)
 
 thirdSection.append(buttonRate)
 
+secondResult.append(congrat);
+secondResult.append(passed);
+secondResult.append(certificate);
+
 //codice
 firstP.textContent = "Results";
 secondP.textContent = "The summary of your answers:"
 
+
+if(correctCount > wrongCount){
+    congrat.textContent = 'Congratulations!';
+    passed.textContent = 'You passed the exam';
+    certificate.innerHTML = 'We\'ll send you the certificate in few minutes. <br> Check your email (including promotion / spam folder)';
+}
+else {
+    congrat.textContent = 'Oh No';
+    passed.textContent = 'You failed the exam :(';
+    certificate.innerHTML = 'Get in touch with your teacher in order to retry the exam';
+}
+
 pResult1.textContent =  "Correct"
-pResult2.textContent = "%"
+pResult2.textContent = `${(correctCount / onlyCorrectAnswer.length) * 100} %`
 pResult3.textContent = `${correctCount}/10 questions`
 pResult4.textContent =   "Wrong";
-pResult5.textContent = "%";
+pResult5.textContent = `${(wrongCount / onlyCorrectAnswer.length) * 100} %`;
 pResult6.textContent =  `${wrongCount}/10 questions`
 
 buttonRate.textContent = "RATE US";
 
 //dare valore al grafico
-secondResult.style.backgroundImage = `conic-gradient(#00ffff ${correctCount * 36}deg, #d20094 0deg)`;
+secondResult.style.backgroundImage = `conic-gradient(#d20094 ${wrongCount * 36}deg, #00ffff 0deg)`;
+secondResult.style.transitionDuration = '2s';
+
+
+buttonRate.addEventListener('click', function(){
+    destruction();
+    pagina4();
+});
+}
+
 
 function destruction() {
-    
+    newContainer.remove();
 }
