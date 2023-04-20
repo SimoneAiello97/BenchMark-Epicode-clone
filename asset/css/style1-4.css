@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
 
-#background{
-    background-image:url("../img/bg.jpg");
+.background{
+    background-image:url(../img/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -152,9 +152,8 @@ span{
 .fastar{
     
     background-color: rgba(97, 97, 97, 0.279);
-    -webkit-mask: url("../img/star.svg") no-repeat center;
+    -webkit-mask: url(../img/star.svg) no-repeat center;
     mask: url(fastar.svg) no-repeat center;
-    
     height: 46px;
     width: 47px;
     margin:0 4px;
@@ -165,7 +164,7 @@ span{
     margin-bottom: 10px;
 }
 .fastar.selected{
-    background-image: url("../img/star.svg");
+    background-image: url(../img/star.svg);
 }
 
 
