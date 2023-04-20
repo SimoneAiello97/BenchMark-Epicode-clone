@@ -70,6 +70,7 @@
     background-color: transparent;
     border: white 2px solid;
     padding: 1rem 4rem;
+    box-shadow: 0px 0px 40px 0px #00000054, 0px 0px 40px 0px #00000062;
 }
 #rate{
     margin-bottom: 3rem;
