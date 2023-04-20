@@ -3,7 +3,7 @@ const questions = [
     {
       category: "Science: Computers",
       type: "multiple",
-      difficulty: "",
+      difficulty: "medium",
       question: "What does CPU stand for?",
       correct_answer: "Central Processing Unit",
       incorrect_answers: [
@@ -24,7 +24,7 @@ const questions = [
     {
       category: "Science: Computers",
       type: "boolean",
-      difficulty: "easy",
+      difficulty: "hard",
       question: "The logo for Snapchat is a Bell.",
       correct_answer: "False",
       incorrect_answers: ["True"],
@@ -41,7 +41,7 @@ const questions = [
     {
       category: "Science: Computers",
       type: "multiple",
-      difficulty: "easy",
+      difficulty: "hard",
       question:
         "What is the most preferred image format used for logos in the Wikimedia database?",
       correct_answer: ".svg",
@@ -50,7 +50,7 @@ const questions = [
     {
       category: "Science: Computers",
       type: "multiple",
-      difficulty: "easy",
+      difficulty: "medium",
       question: "In web design, what does CSS stand for?",
       correct_answer: "Cascading Style Sheet",
       incorrect_answers: [
@@ -75,7 +75,7 @@ const questions = [
     {
       category: "Science: Computers",
       type: "multiple",
-      difficulty: "easy",
+      difficulty: "medium",
       question: "On Twitter, what is the character limit for a Tweet?",
       correct_answer: "140",
       incorrect_answers: ["120", "160", "100"],
@@ -134,6 +134,7 @@ let span;
 let allAnswers =[];
 let allQuestions = [];
 let onlyCorrectAnswer = [];
+let difficulty = [];
 
 let numeroCasuale
 let selectedQuestion
@@ -243,9 +244,9 @@ function controlAnswer() {
       allQuestions.push(domanda.question)
       domanda.incorrect_answers.push(domanda.correct_answer)
       allAnswers.push(domanda.incorrect_answers)
-      
+      difficulty.push(domanda.difficulty)
     };
-  
+    console.log(difficulty);
     //numero casuale per randomicizzazione domande
     numeroCasuale = Math.floor(Math.random() * allQuestions.length);
   
@@ -254,7 +255,6 @@ function controlAnswer() {
   
      
       shuffle(selectedQuestion);
-  
     // testo domanda  display
     questionsTitle.textContent = allQuestions[numeroCasuale];
     
@@ -286,6 +286,7 @@ function controlAnswer() {
     allQuestions.splice(numeroCasuale, 1);
     allAnswers.splice(numeroCasuale, 1);
     questions.splice(numeroCasuale, 1);
+    difficulty.splice(numeroCasuale, 1);
     //creazione nuovo numero casuale
     if (allQuestions.length !== 0){
     numeroCasuale = Math.floor(Math.random() * allQuestions.length);
@@ -337,8 +338,8 @@ function controlAnswer() {
 
   
       // SELEZIONARE LA DOMANDA GIUSTA
-      for (let question of questions){
-          switch (question.difficulty) {
+
+          switch (difficulty[numeroCasuale]) {
               case 'easy':
                   interval = 83;
                   break;
@@ -348,7 +349,6 @@ function controlAnswer() {
               case 'hard':
                   interval = 250;
           }
-      }
   
       let number = 0;
       timer = setInterval(function(){
@@ -371,8 +371,7 @@ function controlAnswer() {
   
   
   function trovaNumero(){
-  for (let question of questions){
-    switch (question.difficulty) {
+    switch (difficulty[numeroCasuale]) {
         case 'easy':
             countdownNumber = 30;
             break;
@@ -382,7 +381,6 @@ function controlAnswer() {
         case 'hard':
             countdownNumber = 90;
     }
-  }
   seconds.innerHTML = countdownNumber;
   
   myInterval = setInterval(function() {
