@@ -15,21 +15,22 @@
 #question-container p{
     padding: 1.5rem 3.5rem;
     text-align: center;
-    font-size: xx-large;
+    font-size: 4rem;
+    margin-bottom: 40px;
 }
 
 #button-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     margin: 0;
 }
 
 #button-container button{
     display: block;
-    width: 200px;
-    height: 50px;
-    margin: 20px 50px;
+    width: 350px;
+    height: 80px;
+    margin: 10px 20px;
     text-align: center;
     border-radius: 50px;
     z-index: 999;
@@ -38,23 +39,35 @@
     color: white;
     font-weight: bold;
     outline: none;
-    border: 2px solid white;
+    border: 1px solid white;
+    font-size: 1rem;
 }
 
 #button-container button::before{
     content: "";
     top: 0;
     left: 0;
-    width: 200px;
-    height: 50px;
+    width: 350px;
+    height: 80px;
     border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.154);
+    background-color: rgba(255, 255, 255, 0.184);
     position: absolute;
+}
+
+#button-container button:hover::before{
+    width: 0px;
+    height: 0px;
+}
+
+#button-container button:hover{
+    cursor: pointer;
+    background-image: linear-gradient(0deg, #4b1b71, #d20094);
+    transition: 0.5s;
 }
 
 #footer{
     display: flex;
-    margin-bottom: 5rem;
+    margin-top: 4.5rem;
 }
 
 #footer p, #footer span{
@@ -63,4 +76,8 @@
 #footer span{
     margin-left: 0.5rem;
     color: #d20094;
+}
+
+.answers-container{
+    width: 70%;
 }
