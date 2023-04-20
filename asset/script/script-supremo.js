@@ -158,6 +158,8 @@ function verificaCheckbox() {
   }
 }
 
+let proceed = document.querySelector('.bottone')
+proceed.addEventListener('click',verificaCheckbox)
 
 //let displayedQuestions = [];//da eliminare + richiamo
 

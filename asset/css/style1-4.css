@@ -4,10 +4,10 @@
     background-image:url(../img/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    
+    height: 120vh;
 }
 .logo img{
-    width:200px;
+    width: 130px;
 }
 
 span{
@@ -18,13 +18,13 @@ span{
     padding-top: 0.5em;
     padding-right:6em;
     padding-left:6em ;
-    padding-bottom: 4em;
+    padding-bottom: 0;
    
 }
 
 .home2{
 
-    padding-top: 4em;
+    padding-top: 2em;
     padding-left: 6em;
 
 }
@@ -54,9 +54,9 @@ span{
 
 }
 .lista ul{
-
+    margin-top: 3rem;
     list-style-type:disc;
-    padding-left: 20px;
+    padding-left: 2rem;
 }
 .lista ul li {
     margin: 13px 0;
@@ -75,10 +75,21 @@ span{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
+#check-text label{
+    display: flex;
+    align-items: center;
+}
+#check-text label:hover{
+    cursor: pointer;
+}
+
 .checkbox-container span{
     color:#E7E7EB;
     font-family: 'Inter', sans-serif;
+    display: block;
+    padding-left: 1rem;
 }
 .checkbox-container input{
     width: 20px;
@@ -91,6 +102,7 @@ span{
     border-color: white;
     border-style: solid;
     border: 0.5px 0.5px;
+    display: block;
 }
 #miaCheckbox:checked {
     background: white;
@@ -111,6 +123,11 @@ span{
     font-weight: bold;
     font-size: 30px;
     box-shadow: 0px 0px 70px 0px #02c2fdc2, 0px 0px 70px 0px #00eeffcf;
+    border: none
+    
+}
+.bottone:hover{
+    cursor: pointer;
 }
 
 
