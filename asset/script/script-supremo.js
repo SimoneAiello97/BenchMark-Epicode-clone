@@ -192,7 +192,7 @@ function controlAnswer() {
         wrongCount++;
         }
     }
-  
+
     console.log(correctCount);
     console.log(wrongCount);
 }
@@ -329,6 +329,9 @@ function controlAnswer() {
     allContent.remove();
     blocco.remove();
     //nota: funzione pagina 3
+    myStop();
+    clearInterval(myInterval);
+    clearInterval(timer);
     terzaPagina();
     }
     }
@@ -391,13 +394,15 @@ function controlAnswer() {
   myInterval = setInterval(function() {
     countdownNumber -= 1;
     seconds.innerHTML = countdownNumber;
-    if(countdownNumber == 0){
+    if(countdownNumber === 0){
       wrongCount++;
       myStop();
       nextQuestion();
       countdown();
       trovaNumero();
+
   }
+    
   }, 1000);
   
   }
