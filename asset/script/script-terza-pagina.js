@@ -61,6 +61,7 @@ certificate.classList.add('certificate');
 
 function terzaPagina(){
 
+
 //append
 bodyTemp.append(newContainer);
 
@@ -121,6 +122,10 @@ buttonRate.addEventListener('click', function(){
     destruction();
     pagina4();
 });
+
+passed.addEventListener('click', function (){
+    destruction();
+    creationPopup();})
 }
 
 
@@ -137,6 +142,7 @@ function creationPopup(){
     console.log(allWrongAnswer);
     destruction();
     let popupContainer = document.createElement("div");
+    popupContainer.classList.add('popup')
     bodyTemp.append(popupContainer);
     let listaDomande = document.createElement("ul");
     popupContainer.append(listaDomande);
@@ -144,7 +150,7 @@ function creationPopup(){
         listaOrdinata = document.createElement("li");
         listaDomande.append(listaOrdinata);
         listaOrdinata.classList.add("questions-popup")
-        listaOrdinata.textContent = "." + quizQuestion;
+        listaOrdinata.textContent = " - " + quizQuestion;
         let p = document.createElement("p");
         listaOrdinata.append(p);
         })
@@ -159,8 +165,20 @@ function creationPopup(){
         let testoConRispostaGiusta = testoDomanda.replace(rispostaCorretta, "<span style='color:green'>" + rispostaCorretta + "</span>");
         p2.innerHTML = testoConRispostaGiusta;
       }
+      let bottoneIndietro = document.createElement('button');
+      popupContainer.append(bottoneIndietro);
+      bottoneIndietro.id = 'back';
+      bottoneIndietro.textContent = 'GO BACK';
+      bottoneIndietro.addEventListener('click', function(){
+        destruction();
+        distruggiPopup();
+        terzaPagina();
+      });
+      function distruggiPopup() {
+        popupContainer.remove();
+    }
     }
 
     
 
-passed.addEventListener('click', creationPopup);
+
