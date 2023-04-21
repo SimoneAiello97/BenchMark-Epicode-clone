@@ -97,15 +97,6 @@ const questions = [
       correct_answer: "Java",
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
-    {
-      category: "Science: Computers",
-      type: "multiple",
-      difficulty: "easy",
-      question:
-        "Simone, sta facendo una cagata?",
-      correct_answer: "Javascript",
-      incorrect_answers: ["si", "no", "forse"],
-    },
   ];
 //
 

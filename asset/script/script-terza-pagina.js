@@ -136,12 +136,13 @@ function destruction() {
 //popup
 let listaOrdinata;
 let tuttiLi;
+let popupContainer;
 function creationPopup(){
     console.log(questionsPopup);
     console.log(allAnswerPopup);
     console.log(allWrongAnswer);
     destruction();
-    let popupContainer = document.createElement("div");
+    popupContainer = document.createElement("div");
     popupContainer.classList.add('popup')
     bodyTemp.append(popupContainer);
     let listaDomande = document.createElement("ul");
@@ -165,20 +166,17 @@ function creationPopup(){
         let testoConRispostaGiusta = testoDomanda.replace(rispostaCorretta, "<span style='color:green'>" + rispostaCorretta + "</span>");
         p2.innerHTML = testoConRispostaGiusta;
       }
+      
       let bottoneIndietro = document.createElement('button');
       popupContainer.append(bottoneIndietro);
       bottoneIndietro.id = 'back';
       bottoneIndietro.textContent = 'GO BACK';
       bottoneIndietro.addEventListener('click', function(){
-        destruction();
         distruggiPopup();
         terzaPagina();
       });
-      function distruggiPopup() {
+      
+    }
+    function distruggiPopup() {
         popupContainer.remove();
     }
-    }
-
-    
-
-

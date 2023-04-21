@@ -4,6 +4,8 @@ let centro4 = document.createElement("div");
 centro4.classList.add("centro");
 
 
+
+
 function pagina4() {
   
 
