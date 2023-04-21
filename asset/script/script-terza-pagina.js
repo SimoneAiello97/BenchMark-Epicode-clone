@@ -115,7 +115,7 @@ pResult6.textContent =  `${wrongCount}/${onlyCorrectAnswer.length} questions`
 buttonRate.textContent = "RATE US";
 
 //dare valore al grafico
-secondResult.style.backgroundImage = `conic-gradient(#d20094 ${wrongCount * 36}deg, #00ffff 0deg)`;
+secondResult.style.backgroundImage = `conic-gradient(#d20094 ${wrongCount * (360/onlyCorrectAnswer.length)}deg, #00ffff 0deg)`;
 
 
 buttonRate.addEventListener('click', function(){

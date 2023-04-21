@@ -97,6 +97,15 @@ const questions = [
       correct_answer: "Java",
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question:
+        "Which programming language shares its name with an island in Indonesia?",
+      correct_answer: "Java",
+      incorrect_answers: ["Python", "C", "Jakarta"],
+    }
   ];
 //
 
