@@ -118,6 +118,8 @@ buttonRate.textContent = "RATE US";
 secondResult.style.backgroundImage = `conic-gradient(#d20094 ${wrongCount * (360/onlyCorrectAnswer.length)}deg, #00ffff 0deg)`;
 
 
+
+}
 buttonRate.addEventListener('click', function(){
     destruction();
     pagina4();
@@ -126,8 +128,6 @@ buttonRate.addEventListener('click', function(){
 passed.addEventListener('click', function (){
     destruction();
     creationPopup();})
-}
-
 
 function destruction() {
     newContainer.remove();
