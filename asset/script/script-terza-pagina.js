@@ -94,12 +94,13 @@ secondP.textContent = "The summary of your answers:"
 
 if(correctCount > wrongCount){
     congrat.textContent = 'Congratulations!';
-    passed.textContent = 'You passed the exam';
+    passed.innerHTML = '<a href="#">You passed the exam</a>';
+    passed.id = 'popup-link';
     certificate.innerHTML = 'We\'ll send you the certificate in few minutes. <br> Check your email (including promotion / spam folder)';
 }
 else {
     congrat.textContent = 'Oh No';
-    passed.textContent = 'You failed the exam :(';
+    passed.innerHTML = '<a href="#">You failed the exam :(</a>';
     certificate.innerHTML = 'Get in touch with your teacher in order to retry the exam';
 }
 
@@ -126,3 +127,40 @@ buttonRate.addEventListener('click', function(){
 function destruction() {
     newContainer.remove();
 }
+
+//popup
+let listaOrdinata;
+let tuttiLi;
+function creationPopup(){
+    console.log(questionsPopup);
+    console.log(allAnswerPopup);
+    console.log(allWrongAnswer);
+    destruction();
+    let popupContainer = document.createElement("div");
+    bodyTemp.append(popupContainer);
+    let listaDomande = document.createElement("ul");
+    popupContainer.append(listaDomande);
+    questionsPopup.forEach(quizQuestion => {
+        listaOrdinata = document.createElement("li");
+        listaDomande.append(listaOrdinata);
+        listaOrdinata.classList.add("questions-popup")
+        listaOrdinata.textContent = "." + quizQuestion;
+        let p = document.createElement("p");
+        listaOrdinata.append(p);
+        })
+    let allP = document.querySelectorAll(".questions-popup p");
+    for (let i = 0; i < allAnswerPopup.length; i++) {
+      allP[i].textContent = allAnswerPopup[i];
+    }
+    for (let i = 0; i < onlyCorrectAnswer.length; i++) {
+        let p2 = allP[i];
+        let rispostaCorretta = onlyCorrectAnswer[i];
+        let testoDomanda = p2.textContent;
+        let testoConRispostaGiusta = testoDomanda.replace(rispostaCorretta, "<span style='color:green'>" + rispostaCorretta + "</span>");
+        p2.innerHTML = testoConRispostaGiusta;
+      }
+    }
+
+    
+
+passed.addEventListener('click', creationPopup);

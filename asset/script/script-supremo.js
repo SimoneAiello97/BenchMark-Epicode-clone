@@ -152,6 +152,9 @@ let givenAnswer = [];
 let correctAnswer
 let correctCount = 0;
 let wrongCount = 0;
+let questionsPopup = [];
+let allAnswerPopup = [];
+let allWrongAnswer = [];
 
 //distruzione prima pagina e creazione seconda
 function verificaCheckbox() {
@@ -242,6 +245,7 @@ function controlAnswer() {
 
     for (let domanda of questions) {
       allQuestions.push(domanda.question)
+      allWrongAnswer.push(domanda.incorrect_answers)
       domanda.incorrect_answers.push(domanda.correct_answer)
       allAnswers.push(domanda.incorrect_answers)
       difficulty.push(domanda.difficulty)
@@ -281,8 +285,13 @@ function controlAnswer() {
     
   }//chiusura  creation
 
+
   // next question & next risposte
   function nextQuestion() {
+    questionsPopup.push(allQuestions[numeroCasuale]);
+    allAnswerPopup.push(allAnswers[numeroCasuale]);
+    console.log(questionsPopup);
+    console.log(allAnswerPopup);
     //eliminazione domanda(e relative risposte) già vista
     allQuestions.splice(numeroCasuale, 1);
     allAnswers.splice(numeroCasuale, 1);
