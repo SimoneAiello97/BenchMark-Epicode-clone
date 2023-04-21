@@ -104,11 +104,11 @@ else {
 }
 
 pResult1.textContent =  "Correct"
-pResult2.textContent = `${(correctCount / onlyCorrectAnswer.length) * 100} %`
-pResult3.textContent = `${correctCount}/10 questions`
+pResult2.textContent = `${Math.floor((correctCount / onlyCorrectAnswer.length) * 100)} %`
+pResult3.textContent = `${correctCount}/${onlyCorrectAnswer.length} questions`
 pResult4.textContent =   "Wrong";
-pResult5.textContent = `${(wrongCount / onlyCorrectAnswer.length) * 100} %`;
-pResult6.textContent =  `${wrongCount}/10 questions`
+pResult5.textContent = `${Math.ceil((wrongCount / onlyCorrectAnswer.length) * 100)} %`;
+pResult6.textContent =  `${wrongCount}/${onlyCorrectAnswer.length} questions`
 
 buttonRate.textContent = "RATE US";
 

@@ -97,6 +97,15 @@ const questions = [
       correct_answer: "Java",
       incorrect_answers: ["Python", "C", "Jakarta"],
     },
+    {
+      category: "Science: Computers",
+      type: "multiple",
+      difficulty: "easy",
+      question:
+        "Simone, sta facendo una cagata?",
+      correct_answer: "Javascript",
+      incorrect_answers: ["si", "no", "forse"],
+    },
   ];
 //
 
@@ -130,6 +139,7 @@ let bloccoBottoni;
 let footer;
 let footerText;
 let span;
+
     //  array domande risposte
 let allAnswers =[];
 let allQuestions = [];
@@ -142,7 +152,7 @@ let givenAnswer = [];
 let correctAnswer
 let correctCount = 0;
 let wrongCount = 0;
-  
+
 //distruzione prima pagina e creazione seconda
 function verificaCheckbox() {
   let casella = document.getElementById('miaCheckbox');
@@ -161,13 +171,6 @@ function verificaCheckbox() {
 let proceed = document.querySelector('.bottone')
 proceed.addEventListener('click',verificaCheckbox)
 
-//let displayedQuestions = [];//da eliminare + richiamo
-
-  //creation();
-  //lancio funzioni timer
-  //countdown();
-  //trovaNumero();
-  //
   //randomicizzare ordine risposte
   function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -178,13 +181,11 @@ proceed.addEventListener('click',verificaCheckbox)
     let buttonText = event.target.textContent;
     console.log(buttonText);
     givenAnswer.push(buttonText);
-
-    //displayedQuestions.push(allQuestions[numeroCasuale]); da eliminare + dichiarazione
 }
   
 //funzione di controllo
 function controlAnswer() {
-    
+
     for (let i = 0; i < givenAnswer.length; i++) {
         if (onlyCorrectAnswer.includes(givenAnswer[i])) {
         correctCount++;
@@ -192,11 +193,12 @@ function controlAnswer() {
         wrongCount++;
         }
     }
+    
     console.log(correctCount);
     console.log(wrongCount);
-}
+    
+  }
   function creation() {
-    //console.log(questions);
     //CREAZIONE ELEMENTI/STRUTTURA PAGINA
     
     // TEMPORANEO
@@ -236,10 +238,7 @@ function controlAnswer() {
     footerText.textContent = `QUESTION 1`
     span = document.createElement("span");
     footer.append(span);
-    span.textContent = "/10"
-
-    // CODICE
-
+    span.textContent = `/${questions.length}`
 
     for (let domanda of questions) {
       allQuestions.push(domanda.question)
@@ -281,6 +280,7 @@ function controlAnswer() {
     
     
   }//chiusura  creation
+
   // next question & next risposte
   function nextQuestion() {
     //eliminazione domanda(e relative risposte) già vista
@@ -294,9 +294,6 @@ function controlAnswer() {
     //nuovo shuffle risposte
     selectedQuestion = allAnswers[numeroCasuale];
     shuffle(selectedQuestion);
-    //console.log(numeroCasuale);
-    //console.log(questions);
-    //console.log(allAnswers);
     //ricarca e creazione array per controllo risposte
     correctAnswer = allAnswers[numeroCasuale].find(answer => answer === questions[numeroCasuale].correct_answer);
     onlyCorrectAnswer.push(correctAnswer);
@@ -370,13 +367,6 @@ function controlAnswer() {
         }
   }
   
-  
-  // let myButton = document.getElementById('button');
-  // myButton.addEventListener('click', function() {
-  // myStop();
-  // countdown();
-  // trovaNumero();
-  // })
   
   function myStop(){
     clearInterval(myInterval);
